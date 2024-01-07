@@ -1,8 +1,12 @@
 <?php
 require "../dao/pdo.php";
 require "../dao/sanbay.php";
-// require "../dao/khach-hang.php";
-// require "../dao/role.php";
+require "../dao/ve.php";
+require "../dao/taikhoan.php";
+require "../dao/chuyenbay.php";
+require "../dao/hanhkhach.php";
+
+
 // require "../dao/sanbay.php";
 // require "../dao/order.php";
 require "../lib/validate.php ";
@@ -24,6 +28,14 @@ require "../lib/validate.php ";
 
         $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
         $sanbay    = new SanBay();
+        $ve    = new Ve();
+        $tk    = new TaiKhoan();
+        $chuyenbay    = new ChuyenBay();
+        $hanhkhach    = new HanhKhach();
+
+
+
+
         // $tk    = new KhachHang();
         // $bl    = new BinhLuan();
         // $role    = new Role();
@@ -123,17 +135,18 @@ require "../lib/validate.php ";
             }
 
 
-            // //------------------------------------------------------Module Product------------------------------ 
-            // case 'list_products': {
-            //     include "resource/products/list.php";
-            //     break;
-            // }
+            // //------------------------------------------------------Module Ve------------------------------ 
+            case 'list_ve': {
+                $list_ve  = $ve->ve_select_all();
+                include "resource/ve/list.php";
+                break;
+            }
 
-            // case 'add_products': {
-            //     $list_sanbay  = $sanbay->sanbay_select_all();
-            //     include "resource/products/add.php";
-            //     break;
-            // }
+            case 'add_ve': {
+                $list_ve  = $ve->ve_select_all();
+                include "resource/ve/add.php";
+                break;
+            }
 
             // case 'insert_product': {
             //     // $value = check_form_add_product();
@@ -214,10 +227,11 @@ require "../lib/validate.php ";
 
 
             // //-----------------------------------------------------Module Account---------------------------------------------------
-            // case 'account': {
-            //     include "resource/account/" . $pages . ".php";
-            //     break;
-            // }
+            case 'list_taikhoan': {
+                $list_tk = $tk->taikhoan_select_all();
+                include "resource/taikhoan/list.php";
+                break;
+            }
 
             // case 'edit': {
             //     include "resource/account/" . $pages . ".php";
@@ -229,12 +243,12 @@ require "../lib/validate.php ";
             //     break;
             // }
 
-            // //-----------------------------------------------------Module Roles------------------------------------------------------
-            // case "list_role": {
-            //     $list_role = $role->role_select_all();
-            //     include "resource/roles/list.php";
-            //     break;
-            // }
+            // //-----------------------------------------------------Module ChuyenBay------------------------------------------------------
+            case "list_chuyenbay": {
+                $list_chuyenbay = $chuyenbay->chuyenbay_select_all();
+                include "resource/chuyenbay/list.php";
+                break;
+            }
 
             // case 'add_role': {
             //     include "resource/roles/form-add.php";
@@ -312,11 +326,12 @@ require "../lib/validate.php ";
             //     break;
             // }
 
-            // //-----------------------------------------------------Module User------------------------------------------------------
-            // case 'list_account': {
-            //     include "resource/user/list.php";
-            //     break;
-            // }
+            // //-----------------------------------------------------Module Hanh Khach------------------------------------------------------
+            case 'list_hanhkhach': {
+                $list_hanhkhach = $hanhkhach->hanhkhach_select_all();
+                include "resource/hanhkhach/list.php";
+                break;
+            }
 
             // case 'add_user': {
             //     $list_user  = $tk->user_select_all();

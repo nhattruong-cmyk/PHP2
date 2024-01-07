@@ -5,44 +5,57 @@
 
                 <form action="?pages=delete_all_cate" method="post">
                     <button type="submit" class="btn btn-secondary" name="delete_all">Delete</button>
-                    <a class="btn btn-primary" role="button" href="index.php?pages=form_add_sanbay">Add</a>
+                    <a class="btn btn-primary" role="button" href="index.php?pages=form_add_chuyenbay">Add</a>
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th><input type="checkbox" id="category1" onclick="checkedAllCate();"></th>
-                                <th scope="col">MaSanBay</th>
-                                <th scope="col">TenSanBay</th>
-                                <th scope="col">DiaChi</th>
-                                <th scope="col">ThongTinLienHe</th>
+                                <th scope="col">MaChuyenBay</th>
+                                <th scope="col">MaSanBayXuatPhat</th>
+                                <th scope="col">MaSanBayDen</th>
+                                <th scope="col">NgayGioXuatPhat</th>
+                                <th scope="col">NgayGioDen</th>
+                                <th scope="col">SoGheTrong</th>
+                                <th scope="col">TongSoGhe</th>
                                 <th scope="col">Action</th>
+
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
                             $stt = 0;
-                            foreach ($list_sanbay as $item) {
+                            foreach ($list_chuyenbay as $item) {
                                 extract($item);
                                 $stt++; ?>
                                 <tr>
                                     <td> <input type="checkbox" class="category" name="cate_id[]" value="<?= $cate_id ?>">
                                     </td>
                                     <td>
-                                        <?= $MaSanBay ?>
+                                        <?= $MaChuyenBay ?>
                                     </td>
                                     <td>
-                                        <?= $TenSanBay ?>
+                                        <?= $MaSanBayXuatPhat ?>
                                     </td>
                                     <td>
-                                        <?= $DiaChi ?>
+                                        <?= $MaSanBayDen ?>
                                     </td>
                                     <td>
-                                        <?= $ThongTinLienHe ?>
+                                        <?= $NgayGioXuatPhat ?>
                                     </td>
                                     <td>
-                                        <a class="dropdown-item" href="?pages=edit_cate&cate_id=<?= $MaSanBay ?>">Edit</a>
+                                        <?= $NgayGioDen ?>
+                                    </td>
+                                    <td>
+                                        <?= $SoGheTrong ?>
+                                    </td>
+                                    <td>
+                                        <?= $TongSoGhe ?>
+                                    </td>
+                                    <td>
+                                        <a class="dropdown-item" href="?pages=edit_cate&cate_id=<?= $MaChuyenBay ?>">Edit</a>
                                         <a class="dropdown-item"
-                                            href="?pages=delete_cate&cate_id=<?= $MaSanBay ?>">Delete</a>
+                                            href="?pages=delete_cate&cate_id=<?= $MaChuyenBay ?>">Delete</a>
                                     </td>
                                 </tr>
                                 <?php

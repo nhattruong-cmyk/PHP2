@@ -13,24 +13,28 @@ function check_login()
     $_SESSION['request_uri'] = $_SERVER["REQUEST_URI"];
     header("location: $ADMIN_URL/pages/account/");
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Check TenSanBay
 function check_tensanbay($TenSanBay)
 {
-    $parttern = "/^[A-Za-z0-9_\.]{6,32}$/";
-    if (preg_match($parttern, $TenSanBay)) {
+    $pattern = "/^[A-Za-z0-9\s]+$/";
+    if (preg_match($pattern, $TenSanBay)) {
         return true;
     }
+    return false;
 }
 
 //Check MaSanBay
 function check_masanbay($MaSanBay)
 {
-    $parttern = "/^[a-zA-Z]+[a-zA-Z\s-]*[a-zA-Z]+$/";
-    if (preg_match($parttern, $MaSanBay)) {
+    $pattern = "/^[0-9]/";
+    if (preg_match($pattern, $MaSanBay)) {
         return true;
     }
+    return false;
 }
+
 
 //Check DiaChi
 function check_diachi($DiaChi)
@@ -50,7 +54,19 @@ function check_thongtinlienhe($ThongTinLienHe)
     }
 }
 
-//Function check form add sanbay
+//Check password
+function check_matkhau($MatKhau)
+{
+    $parttern = "/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
+    if (preg_match($parttern, $MatKhau)) {
+        return true;
+    }
+}
+
+
+
+
+//Function check form add sanbay------------------------------------------------------------------------------------------------------------------
 function check_form_add_sanbay()
 
 
@@ -72,13 +88,15 @@ function check_form_add_sanbay()
 
     //---------------Check masanbay---------------
     if (!empty($MaSanBay)) {
-        if (strlen($MaSanBay) > 40) {
-            $error['error_masanbay'] = 'The masanbay too long!';
+        if (strlen($MaSanBay) > 10) {
+            $error['error_masanbay'] = 'The masanbay is too long!';
+        } elseif (!preg_match("/^[0-9]/", $MaSanBay)) {
+            $error['error_masanbay'] = 'Invalid characters in masanbay! Please use only numeric digits.';
         }
     } else {
         $error['error_masanbay'] = 'The masanbay can’t be empty!';
     }
-
+    
 
     //---------------Check DiaChi---------------
     if (!empty($DiaChi)) {
@@ -237,20 +255,45 @@ function check_form_add_sanbay()
 //         return $value;
 //     }
 // }
-// Function check form add category
-function check_form_add_category()
+
+
+// Function check form add Nguoidung-------------------------------------------------------------------------------------------------------------------
+function check_form_add_taikhoan()
 {
     $error = [];
-    $cate_name = $_POST['cate_name'];
-    $parent_id = $_POST['parent_id'];
+    $TenNguoiDung = $_POST['TenNguoiDung'];
+    $MaNguoiDung = $_POST['MaNguoiDung'];
+    $MatKhau = $_POST['MatKhau'];
 
-    if (!empty($cate_name)) {
-        if (is_numeric($cate_name)) {
-            $error['error_name_cate'] = 'The category name must be a letter!';
+
+    //---------------Check TenNguoiDung---------------
+    if (!empty($TenNguoiDung)) {
+        if (!check_tensanbay($TenNguoiDung)) {
+            $error['error_tennguoidung'] = 'The tennguoidung has an incorect format!';
         }
     } else {
-        $error['error_name_cate'] = 'The category name can’t be empty!';
+        $error['error_tennguoidung'] = 'The tennguoidung can’t be empty!';
     }
+//---------------Check manguoidung---------------
+if (!empty($MaNguoiDung)) {
+    if (strlen($MaNguoiDung) > 10) {
+        $error['error_manguoidung'] = 'The manguoidung is too long!';
+    } elseif (!preg_match("/^[0-9]/", $MaNguoiDung)) {
+        $error['error_manguoidung'] = 'Invalid characters in manguoidung! Please use only numeric digits.';
+    }
+} else {
+    $error['error_manguoidung'] = 'The manguoidung can’t be empty!';
+}
+
+ //---------------Check password---------------
+    if (!empty($MatKhau)) {
+        if (!check_matkhau($MatKhau)) {
+            $error['error_matkhau'] = 'The matkhau has an incorect format!';
+        }
+    } else {
+        $error['error_matkhau'] = 'The matkhau can’t be empty!';
+    }
+
 
     if (!empty($error)) {
         $value = [
@@ -259,8 +302,9 @@ function check_form_add_category()
         return $value;
     } else {
         $value = [
-            'cate_name' => $cate_name,
-            'parent_id' => $parent_id,
+            'TenNguoiDung' => $TenNguoiDung,
+            'MaNguoiDung' => $MaNguoiDung,
+            'MatKhau' => $MatKhau
         ];
         return $value;
     }

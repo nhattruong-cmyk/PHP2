@@ -5,9 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quản Trị Vé Máy Bay</title>
-  <link rel="shortcut icon" type="image/png" href="src/assets/images/logos/favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="/public/images/logo.png" />
   <link rel="stylesheet" href="src/assets/css/styles.min.css" />
 </head>
+
 <body>
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -18,7 +19,11 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="index.php?pages=home" class="text-nowrap logo-img">
-            <img src="src/assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <div class="div" style="width: 150px; height: 130px; text-align: center; margin-top:20px;">
+              <img src="/public/images/logo.png" style="width: 120px; height: 100px;"  alt="" />
+            </div>
+
+
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -128,7 +133,8 @@
             <div class="d-flex">
               <div class="unlimited-access-title me-3">
                 <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Upgrade to pro</h6>
-                <a href="https://adminmart.com/product/modernize-bootstrap-5-admin-template/" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
+                <a href="https://adminmart.com/product/modernize-bootstrap-5-admin-template/" target="_blank"
+                  class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
               </div>
               <div class="unlimited-access-img">
                 <img src="src/assets/images/backgrounds/rocket.png" alt="" class="img-fluid">
@@ -161,7 +167,8 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Download Free</a>
+              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank"
+                class="btn btn-primary">Download Free</a>
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">

@@ -7,6 +7,8 @@
   <title>Quản Trị Vé Máy Bay</title>
   <link rel="shortcut icon" type="image/png" href="/public/images/logo.png" />
   <link rel="stylesheet" href="src/assets/css/styles.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -20,7 +22,7 @@
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="index.php?pages=home" class="text-nowrap logo-img">
             <div class="div" style="width: 150px; height: 130px; text-align: center; margin-top:20px;">
-              <img src="/public/images/logo.png" style="width: 120px; height: 100px;"  alt="" />
+              <img src="/public/images/logo.png" style="width: 120px; height: 100px;" alt="" />
             </div>
 
 
@@ -50,8 +52,11 @@
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="index.php?pages=list_sanbay" aria-expanded="false">
-                <span>
-                  <i class="ti ti-article"></i>
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-aspect-ratio-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M0 12.5v-9A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5M2.5 4a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 1 0V5h2.5a.5.5 0 0 0 0-1zm11 8a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-1 0V11h-2.5a.5.5 0 0 0 0 1z" />
+                  </svg>
                 </span>
                 <span class="hide-menu">Sân Bay</span>
               </a>
@@ -59,7 +64,11 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="index.php?pages=list_ve" aria-expanded="false">
                 <span>
-                  <i class="ti ti-alert-circle"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-ticket-detailed-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zm4 1a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5m0 5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5M4 8a1 1 0 0 0 1 1h6a1 1 0 1 0 0-2H5a1 1 0 0 0-1 1" />
+                  </svg>
                 </span>
                 <span class="hide-menu">Vé</span>
               </a>
@@ -75,7 +84,11 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="index.php?pages=list_chuyenbay" aria-expanded="false">
                 <span>
-                  <i class="ti ti-file-description"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-airplane-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849" />
+                  </svg>
                 </span>
                 <span class="hide-menu">Chuyến Bay</span>
               </a>

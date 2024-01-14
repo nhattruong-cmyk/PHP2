@@ -59,7 +59,11 @@ class TaiKhoan extends Connect{
             $sql = "SELECT * FROM taikhoan WHERE parent_id=?";
             return $this->pdo_query($sql, $parent_id);
         }
-
+        function user_select_by_username($TenNguoiDung)
+        {
+            $sql = "SELECT * FROM `nguoidung` WHERE TenNguoiDung = '$TenNguoiDung';";
+            return  $this->pdo_query_one($sql);
+        }
     }
     
 ?>

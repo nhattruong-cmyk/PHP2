@@ -25,7 +25,7 @@ function check_tensanbay($TenSanBay)
     return false;
 }
 
-//Check MaSanBay
+// Check MaSanBay
 function check_masanbay($MaSanBay)
 {
     $pattern = "/^[0-9]/";
@@ -86,7 +86,7 @@ function check_form_add_sanbay()
         $error['error_tensanbay'] = 'The tensanbay can’t be empty!';
     }
 
-    //---------------Check masanbay---------------
+    // ---------------Check masanbay---------------
     if (!empty($MaSanBay)) {
         if (strlen($MaSanBay) > 10) {
             $error['error_masanbay'] = 'The masanbay is too long!';

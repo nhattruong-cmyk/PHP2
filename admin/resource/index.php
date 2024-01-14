@@ -5,24 +5,7 @@ require "../dao/ve.php";
 require "../dao/taikhoan.php";
 require "../dao/chuyenbay.php";
 require "../dao/hanhkhach.php";
-
-
-// require "../dao/sanbay.php";
-// require "../dao/order.php";
 require "../lib/validate.php ";
-// require "../lib/pagging/pagging.php ";
-// require "../dao/binh-luan.php";
-// require "../dao/statistic.php";
-
-// if(isset($_SESSION['timestamp'])){
-//     if(time() - $_SESSION['timestamp'] > 300) { //subtract new timestamp from the old one
-//         echo"<script>alert('5 Minutes over!');</script>";
-//         unset($_SESSION['user'], $_SESSION['timestamp']);        
-//       } else {
-//         $_SESSION['timestamp'] = time(); //set new timestamp
-//       }
-// }
-
 
         require "include/header.php";
 
@@ -32,13 +15,6 @@ require "../lib/validate.php ";
         $tk    = new TaiKhoan();
         $chuyenbay    = new ChuyenBay();
         $hanhkhach    = new HanhKhach();
-
-
-
-
-        // $tk    = new KhachHang();
-        // $bl    = new BinhLuan();
-        // $role    = new Role();
 
         switch ($pages) {
             //-------------------------------------------------------Module Home---------------------------- 

@@ -1,0 +1,61 @@
+
+.item {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+.booking-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 200px;
+    line-height: 20px;
+    text-align: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.select-box {
+    width: 100%; /* Đảm bảo rằng ô chọn chiếm toàn bộ chiều rộng của container */
+    margin: 0 20px;
+    height: 30px;
+    background-color: #4CAF50;
+}
+select{
+    height: 50px;
+}
+input{
+    height: 50px;
+}
+
+.search-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px; 
+    height: 70px;
+
+}
+.form-header {
+    position: absolute;
+    bottom:80%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.form-header h1{
+    color: #4CAF50;
+}
+

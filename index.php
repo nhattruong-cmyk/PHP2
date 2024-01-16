@@ -1,3 +1,3 @@
 <?php 
-require './resource/index.php';
+require 'App/Controllers/Client/index.php';
 ?>

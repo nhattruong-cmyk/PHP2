@@ -1,4 +1,4 @@
-
+/* css cho phần form booking và cau slogan-------------------------------------------------------------------- */
 .item {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -11,9 +11,11 @@
     position: relative;
 }
 
+
 .booking-form {
+    position: absolute;
+    position: relative;
     background-color: #fff;
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -24,6 +26,8 @@
     text-align: center;
     flex-wrap: nowrap;
     flex-direction: row;
+    top: 150px;
+    
 }
 
 .select-box {
@@ -52,10 +56,141 @@ input{
 }
 .form-header {
     position: absolute;
+    position: relative;
     bottom:80%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.form-header h1{
-    color: #4CAF50;
-}
 
+.cau1 {
+    position: absolute;
+    margin: 0;
+    padding: 20px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #fff;
+    border-radius: 5px;
+    bottom: 30%;
+    left: 300px;
+    animation: fadeInLeft 1.5s ease;
+    /* Hiệu ứng xuất hiện từ bên trái */
+    writing-mode: horizontal-tb;
+    /* Chữ nằm ngang */
+    width: 800px;
+  }
+
+  .cau2 {
+    position: absolute;
+    font-size: 24px;
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+    animation: fadeInLeft 1.5s ease;
+    writing-mode: horizontal-tb;
+    width:1000px;
+    left: 100px;
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .main-banner .item {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 220px 20% 320px 20%;
+    margin-top: 0px;
+  }
+  
+  .main-banner .item-1 {
+    background-image: url(../images/shooting-from-airplane-window.jpg);
+  }
+  
+
+/* css cho phần form booking và cau slogan END-------------------------------------------------------------------- */
+
+
+
+
+/* css cho phần ĐỊA ĐIỂM NỔI TIẾNG và cau slogan-------------------------------------------------------------------- */
+.container {
+    padding-top: 20px;
+  }
+
+  .row {
+    position: relative;
+  }
+
+  .row h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 35px 0;
+    text-align: center;
+    /* Căn giữa nếu muốn */
+  }
+
+  .col {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .col img {
+    width: 100%;
+    height: 300px;
+    transition: filter 0.3s;
+  }
+
+  .col:hover img {
+    filter: blur(4px);
+  }
+
+  .text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 1;
+    transition: color 0.3s, transform 0.3s;
+    text-align: left;
+    /* Căn đều 2 lề */
+  }
+
+  .col:hover .text-overlay {
+    color: #00FF00;
+    /* Đổi màu chữ thành màu xanh lá khi di chuột vào */
+    transform: translate(-50%, -50%) scale(0.8);
+    /* Nhỏ lại chữ khi di chuột vào */
+  }
+
+  .read-more-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    color: #00FF00;
+    padding: 10px 20px;
+    border: 2px solid #00FF00;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+    /* Đảm bảo nút không đè lên chữ */
+  }
+
+  .col:hover .read-more-btn {
+    opacity: 1;
+  }
+
+/* css cho phần ĐỊA ĐIỂM NỔI TIẾNG và cau slogan END-------------------------------------------------------------------- */

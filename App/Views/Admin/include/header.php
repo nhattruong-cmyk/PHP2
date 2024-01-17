@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quản Trị Vé Máy Bay</title>
-  <link rel="shortcut icon" type="image/png" href="/public/images/logo.png" />
-  <link rel="stylesheet" href="src/assets/css/styles.min.css" />
+  <link rel="shortcut icon" type="image/png" href="../../../public/images/logo.png" />
+  <link rel="stylesheet" href="../../../public/assets_adm/css/styles.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css" rel="stylesheet">
 
 </head>
@@ -22,7 +22,7 @@
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="index.php?pages=home" class="text-nowrap logo-img">
             <div class="div" style="width: 150px; height: 130px; text-align: center; margin-top:20px;">
-              <img src="/public/images/logo.png" style="width: 120px; height: 100px;" alt="" />
+              <img src="../../../public/images/logo.png" style="width: 120px; height: 100px;" alt="" />
             </div>
 
 

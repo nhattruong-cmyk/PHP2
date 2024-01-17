@@ -89,6 +89,7 @@ https://templatemo.com/tm-591-villa-agency
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li><a href="?pages=home" class="active">Trang Chủ</a></li>
+              <li><a href="?pages=timkiemve">Vé</a></li>
               <li><a href="?pages=blog">Bài Viết</a></li>
               <li><a href="?pages=contact">Liên Hệ</a></li>
 
@@ -98,7 +99,7 @@ https://templatemo.com/tm-591-villa-agency
 
                 if ($retrieved_data['QuyenTruyCap'] == "Quản trị viên") {
                   // If the user is an administrator, redirect to the admin page
-                  echo '<div class="xinchao">Xin chào ' . $retrieved_data['TenNguoiDung'] . '-> <a href="App/Views/Admin/index.php">Admin</a></div>
+                  echo '<div class="xinchao">Xin chào ' . $retrieved_data['TenNguoiDung'] . '-> <a href="App/Controllers/Admin/index.php">Admin</a></div>
                  
                   <form class=logout method="post" action=""><input type="submit" name="logout" value="Đăng Xuất"></form>';
 

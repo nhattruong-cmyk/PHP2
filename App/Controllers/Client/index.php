@@ -34,7 +34,7 @@ switch ($pages) {
             break;
         }
 
-    case 'about': {
+    case 'timkiemve': {
             include "App/Views/Client/home/" . $pages . ".php";
             break;
         }

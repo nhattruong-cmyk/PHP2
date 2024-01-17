@@ -1,13 +1,13 @@
 <?php
-require "App/Models/pdo.php";
-require "App/Models/sanbay.php";
-require "App/Models/ve.php";
-require "App/Models/taikhoan.php";
-require "App/Models/chuyenbay.php";
-require "App/Models/hanhkhach.php";
-require "../lib/validate.php ";
+require "../../Models/pdo.php";
+require "../../Models/sanbay.php";
+require "../../Models/ve.php";
+require "../../Models/taikhoan.php";
+require "../../Models/chuyenbay.php";
+require "../../Models/hanhkhach.php";
+require "../../../public/lib/validate.php";
 
-        require "include/header.php";
+        require "../../Views/Admin/include/header.php";
 
         $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
         $sanbay    = new SanBay();
@@ -19,20 +19,20 @@ require "../lib/validate.php ";
         switch ($pages) {
             //-------------------------------------------------------Module Home---------------------------- 
             case 'home': {
-                include "include/home.php";
+                include "../../Views/Admin/include/home.php";
                 break;
             }
 
             //-------------------------------------------------------Module SanBay---------------------------- 
             case "list_sanbay": {
                 $list_sanbay  = $sanbay->sanbay_select_all();
-                include "resource/sanbay/list.php";
+                include "../../Controllers/Admin/sanbay/list.php";
                 break;
             }
 
             case "form_add_sanbay": {
                 $list_sanbay  = $sanbay->sanbay_select_all();
-                include "resource/sanbay/add.php";
+                include "../../Controllers/Admin/sanbay/add.php";
                 break;
             }
 
@@ -50,7 +50,7 @@ require "../lib/validate.php ";
                     echo "<script>window.location.href ='index.php?pages=list_sanbay';</script>";
                 } else {
                     $list_sanbay  = $sanbay->sanbay_select_all();
-                    include "resource/sanbay/add.php";
+                    include "../../Controllers/Admin/sanbay/add.php";
                 }
                 break;
             }
@@ -59,7 +59,7 @@ require "../lib/validate.php ";
                 $id = $_GET['MaSanBay'];
                 $item = $sanbay->sanbay_select_by_id($id);
                 $list_sanbay  = $sanbay->sanbay_select_all();
-                include "resource/sanbaygories/edit.php";
+                include "../../Controllers/Admin/sanbaygories/edit.php";
                 break;
             }
 
@@ -79,7 +79,7 @@ require "../lib/validate.php ";
                 } else {
                     $id = $_POST['MaSanBay'];
                     $item = $sanbay->sanbay_select_by_id($id);
-                    include "resource/sanbay/edit.php";
+                    include "../../Controllers/Admin/sanbay/edit.php";
                 }
                 break;
             }
@@ -114,13 +114,13 @@ require "../lib/validate.php ";
             // //------------------------------------------------------Module Ve------------------------------ 
             case 'list_ve': {
                 $list_ve  = $ve->ve_select_all();
-                include "resource/ve/list.php";
+                include "../../Controllers/Admin/ve/list.php";
                 break;
             }
 
             case 'add_ve': {
                 $list_ve  = $ve->ve_select_all();
-                include "resource/ve/add.php";
+                include "../../Controllers/Admin/ve/add.php";
                 break;
             }
 
@@ -138,7 +138,7 @@ require "../lib/validate.php ";
             //         echo "<script>window.location.href ='?pages=list_products';</script>";
             //     } else {
             //         $list_sanbay  = $sanbay->sanbay_select_all();
-            //         include "resource/products/add.php";
+            //         include "../../Controllers/Admin/products/add.php";
             //     }
             //     break;
             // }
@@ -160,7 +160,7 @@ require "../lib/validate.php ";
             //         $id = $_POST['product_id'];
             //         $item = $db->products_select_by_id($id);
             //         $list_sanbay  = $sanbay->sanbay_select_all();
-            //         include "resource/products/edit.php";
+            //         include "../../Controllers/Admin/products/edit.php";
             //     }
             //     break;
             // }
@@ -169,7 +169,7 @@ require "../lib/validate.php ";
             //     $id = $_GET['product_id'];
             //     $item = $db->products_select_by_id($id);
             //     $list_sanbay  = $sanbay->sanbay_select_all();
-            //     include "resource/products/edit.php";
+            //     include "../../Controllers/Admin/products/edit.php";
             //     break;
             // }
 
@@ -197,7 +197,7 @@ require "../lib/validate.php ";
             //     break;
             // }
             // case 'add_pro': {
-            //     include "resource/statistic/add_pro.php";
+            //     include "../../Controllers/Admin/statistic/add_pro.php";
             //     break;
             // }
 
@@ -205,29 +205,29 @@ require "../lib/validate.php ";
             // //-----------------------------------------------------Module Account---------------------------------------------------
             case 'list_taikhoan': {
                 $list_tk = $tk->taikhoan_select_all();
-                include "resource/taikhoan/list.php";
+                include "../../Controllers/Admin/taikhoan/list.php";
                 break;
             }
 
             // case 'edit': {
-            //     include "resource/account/" . $pages . ".php";
+            //     include "../../Controllers/Admin/account/" . $pages . ".php";
             //     break;
             // }
 
             // case 'edit-pw': {
-            //     include "resource/account/" . $pages . ".php";
+            //     include "../../Controllers/Admin/account/" . $pages . ".php";
             //     break;
             // }
 
             // //-----------------------------------------------------Module ChuyenBay------------------------------------------------------
             case "list_chuyenbay": {
                 $list_chuyenbay = $chuyenbay->chuyenbay_select_all();
-                include "resource/chuyenbay/list.php";
+                include "../../Controllers/Admin/chuyenbay/list.php";
                 break;
             }
 
             // case 'add_role': {
-            //     include "resource/roles/form-add.php";
+            //     include "../../Controllers/Admin/roles/form-add.php";
             //     break;
             // }
 
@@ -245,7 +245,7 @@ require "../lib/validate.php ";
             //         echo "<script>window.location.href ='?pages=list_role';</script>";
             //     } else {
             //         $list_role  = $role->role_select_all();
-            //         include "resource/roles/form-add.php";
+            //         include "../../Controllers/Admin/roles/form-add.php";
             //     }
             //     break;
             // }
@@ -266,7 +266,7 @@ require "../lib/validate.php ";
             //     } else {
             //         $id = $_POST['role_id'];
             //         $item = $role->role_select_by_id($id);
-            //         include "resource/roles/edit.php";
+            //         include "../../Controllers/Admin/roles/edit.php";
             //     }
             //     break;
             // }
@@ -274,7 +274,7 @@ require "../lib/validate.php ";
             // case 'edit_role': {
             //     $id = $_GET['role_id'];
             //     $item = $role->role_select_by_id($id);
-            //     include "resource/roles/edit.php";
+            //     include "../../Controllers/Admin/roles/edit.php";
             //     break;
             // }
 
@@ -305,13 +305,13 @@ require "../lib/validate.php ";
             // //-----------------------------------------------------Module Hanh Khach------------------------------------------------------
             case 'list_hanhkhach': {
                 $list_hanhkhach = $hanhkhach->hanhkhach_select_all();
-                include "resource/hanhkhach/list.php";
+                include "../../Controllers/Admin/hanhkhach/list.php";
                 break;
             }
 
             // case 'add_user': {
             //     $list_user  = $tk->user_select_all();
-            //     include "resource/user/add.php";
+            //     include "../../Controllers/Admin/user/add.php";
             //     break;
             // }
 
@@ -329,7 +329,7 @@ require "../lib/validate.php ";
             //         echo "<script>window.location.href ='?pages=list_account';</script>";
             //     } else {
             //         $list_user  = $tk->user_select_all();
-            //         include "resource/user/add.php";
+            //         include "../../Controllers/Admin/user/add.php";
             //     }
             //     break;
             // }
@@ -351,7 +351,7 @@ require "../lib/validate.php ";
             //         $id = $_POST['user_id'];
             //         $item = $tk->user_select_by_id($id);
             //         $list_user  = $tk->user_select_all();
-            //         include "resource/user/edit.php";
+            //         include "../../Controllers/Admin/user/edit.php";
             //     }
             //     break;
             // }
@@ -360,7 +360,7 @@ require "../lib/validate.php ";
             //     $id = $_GET['user_id'];
             //     $item = $tk->user_select_by_id($id);
             //     $list_user  = $tk->user_select_all();
-            //     include "resource/user/edit.php";
+            //     include "../../Controllers/Admin/user/edit.php";
             //     break;
             // }
             // case "delete_user": {
@@ -389,59 +389,60 @@ require "../lib/validate.php ";
             
             // //-----------------------------------------------------Module Orders----------------------------------------------------
             // case 'orders':{
-            //     include "resource/orders/list.php";
+            //     include "../../Controllers/Admin/orders/list.php";
             //     break;
             // }
 
             // case 'order_detail':{
-            //     include "resource/orders/list_detail.php";
+            //     include "../../Controllers/Admin/orders/list_detail.php";
             //     break;
             // }
 
             // case 'order_delete':{
-            //     include "resource/orders/delete.php";
+            //     include "../../Controllers/Admin/orders/delete.php";
             //     break;
             // }
             
             // case 'order_delete_all':{
-            //     include "resource/orders/delete_all.php";
+            //     include "../../Controllers/Admin/orders/delete_all.php";
             //     break;
             // }
 
             // case 'delete_order_detail':{
-            //     include "resource/orders/delete_order_detail.php";
+            //     include "../../Controllers/Admin/orders/delete_order_detail.php";
             //     break;
             // }
 
             // //-----------------------------------------------------Module Comments--------------------------------------------------
             // case 'list-comment': {
             //     $comments = $bl->binh_luan_select_all();
-            //     include "resource/comments/list.php";
+            //     include "../../Controllers/Admin/comments/list.php";
             //     break;
             // }
 
             // case 'detail': {
             //     $detail_comment = $bl->binh_luan_get_detail($_GET['product_id']);
-            //     include "resource/comments/detail.php";
+            //     include "../../Controllers/Admin/comments/detail.php";
             //     break;
             // }
 
             // case 'delete_comment': {
             //     $bl->binh_luan_delete_one($_GET['comment_id']);
             //     $comments = $bl->binh_luan_select_all();
-            //     include "resource/comments/list.php";
+            //     include "../../Controllers/Admin/comments/list.php";
             //     break;
             // }
             
             // //-----------------------------------------------------Module Statistic-------------------------------------------------
             // case 'statistic_comment': {
-            //     include "resource/statistic/comment.php";
+            //     include "../../Controllers/Admin/statistic/comment.php";
             //     break;
             // }
             //-----------------------------------------------------Module Statistic-------------------------------------------------
             default: {
-                include "resource/home/404.php";
+                include "../../Views/Admin/include/home/404.php";
                 break;
             }
+            require "../../Views/Admin/include/footer.php";
         }
        

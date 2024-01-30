@@ -9,25 +9,25 @@
     justify-content: center;
     height: 100vh;
     position: relative;
+    width: 100%;
 }
 
 
 .booking-form {
     position: absolute;
     position: relative;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    width: auto;
+    width: 1250px;
     height: 200px;
     line-height: 20px;
     text-align: center;
     flex-wrap: nowrap;
     flex-direction: row;
     top: 150px;
-    
 }
 
 .select-box {
@@ -38,11 +38,21 @@
 }
 select{
     height: 50px;
+   
+}
+#departTime{
+  width: 180px;
 }
 input{
     height: 50px;
+    width: 100px;
 }
-
+#masanbay-org{
+  width: 200px;
+}
+#ve-org{
+  width: 120px;
+}
 .search-btn {
     background-color: #4CAF50;
     color: white;

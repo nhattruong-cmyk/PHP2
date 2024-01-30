@@ -1,257 +1,303 @@
 <html>
-    <link rel="stylesheet" href="public/assets/css/css_ve.css">
+<link rel="stylesheet" href="public/assets/css/css_ve.css">
 </html>
 <style>
     .contactform {
-    margin: 0 auto;
-    width: 100%;
-    height: auto;
-  }
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+    }
 
-  .contact_head {
-    margin: 0 auto;
-    width: 85%;
-    height: 400px;
-    background-image: url(public/assets/images/banner_contact.jpg);
-    background-size: 100% 100%;
-  }
-  .contact-mb-4{
-    margin: 50px auto;
-    width: 70%;
-  }
+    .contact_head {
+        margin: 0 auto;
+        width: 85%;
+        height: 400px;
+        background-image: url(public/assets/images/banner-01.jpg);
+        background-size: 100% 100%;
+    }
+
+    .contact-mb-4 {
+        margin: 50px auto;
+        width: 70%;
+    }
 </style>
 
 
 <div class="contact_head">
     <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
     <h4 class="cau2">"Hành khách cần chúng tôi hỗ trợ trong thời gian sớm? Hãy chủ
-    động tìm kiếm giải pháp thông qua các chức năng trên website, ứng dụng di động của Vietnam Airlines, hoặc cung cấp
-    thông tin theo mẫu để chúng tôi trợ giúp nhanh hơn!"</h4>
-  </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="shop__sidebar">
-                        <div class="shop__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="Search...">
-                                <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-</svg></button>
-                            </form>
-                        </div>
-                        <div class="shop__sidebar__accordion">
-                            <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
-                                    </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__categories">
-                                                <ul class="nice-scroll">
-                                                    <li><a href="#">Men (20)</a></li>
-                                                    <li><a href="#">Women (20)</a></li>
-                                                    <li><a href="#">Bags (20)</a></li>
-                                                    <li><a href="#">Clothing (20)</a></li>
-                                                    <li><a href="#">Shoes (20)</a></li>
-                                                    <li><a href="#">Accessories (20)</a></li>
-                                                    <li><a href="#">Kids (20)</a></li>
-                                                    <li><a href="#">Kids (20)</a></li>
-                                                    <li><a href="#">Kids (20)</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__brand">
-                                                <ul>
-                                                    <li><a href="#">Louis Vuitton</a></li>
-                                                    <li><a href="#">Chanel</a></li>
-                                                    <li><a href="#">Hermes</a></li>
-                                                    <li><a href="#">Gucci</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__price">
-                                                <ul>
-                                                    <li><a href="#">$0.00 - $50.00</a></li>
-                                                    <li><a href="#">$50.00 - $100.00</a></li>
-                                                    <li><a href="#">$100.00 - $150.00</a></li>
-                                                    <li><a href="#">$150.00 - $200.00</a></li>
-                                                    <li><a href="#">$200.00 - $250.00</a></li>
-                                                    <li><a href="#">250.00+</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFour">Size</a>
-                                    </div> -->
-                                    <!-- <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__size">
-                                                <label for="xs">xs
-                                                    <input type="radio" id="xs">
-                                                </label>
-                                                <label for="sm">s
-                                                    <input type="radio" id="sm">
-                                                </label>
-                                                <label for="md">m
-                                                    <input type="radio" id="md">
-                                                </label>
-                                                <label for="xl">xl
-                                                    <input type="radio" id="xl">
-                                                </label>
-                                                <label for="2xl">2xl
-                                                    <input type="radio" id="2xl">
-                                                </label>
-                                                <label for="xxl">xxl
-                                                    <input type="radio" id="xxl">
-                                                </label>
-                                                <label for="3xl">3xl
-                                                    <input type="radio" id="3xl">
-                                                </label>
-                                                <label for="4xl">4xl
-                                                    <input type="radio" id="4xl">
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                </div>-->
-                                <!-- <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">Colors</a>
-                                    </div>
-                                    <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
-                                         <div class="card-body">
-                                            <div class="shop__sidebar__color">
-                                                <label class="c-1" for="sp-1">
-                                                    <input type="radio" id="sp-1">
-                                                </label>
-                                                <label class="c-2" for="sp-2">
-                                                    <input type="radio" id="sp-2">
-                                                </label>
-                                                <label class="c-3" for="sp-3">
-                                                    <input type="radio" id="sp-3">
-                                                </label>
-                                                <label class="c-4" for="sp-4">
-                                                    <input type="radio" id="sp-4">
-                                                </label>
-                                                <label class="c-5" for="sp-5">
-                                                    <input type="radio" id="sp-5">
-                                                </label>
-                                                <label class="c-6" for="sp-6">
-                                                    <input type="radio" id="sp-6">
-                                                </label>
-                                                <label class="c-7" for="sp-7">
-                                                    <input type="radio" id="sp-7">
-                                                </label>
-                                                <label class="c-8" for="sp-8">
-                                                    <input type="radio" id="sp-8">
-                                                </label>
-                                                <label class="c-9" for="sp-9">
-                                                    <input type="radio" id="sp-9">
-                                                </label>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div> -->
-                                <!-- <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseSix">Tags</a>
-                                    </div>
-                                    <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__tags">
-                                                <a href="#">Product</a>
-                                                <a href="#">Bags</a>
-                                                <a href="#">Shoes</a>
-                                                <a href="#">Fashio</a>
-                                                <a href="#">Clothing</a>
-                                                <a href="#">Hats</a>
-                                                <a href="#">Accessories</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+        động tìm kiếm giải pháp thông qua các chức năng trên website, ứng dụng di động của Vietnam Airlines, hoặc cung
+        cấp
+        thông tin theo mẫu để chúng tôi trợ giúp nhanh hơn!"</h4>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="shop__sidebar">
+                <div class="shop__sidebar__search">
+                    <form action="#">
+                        <input type="text" placeholder="Search...">
+                        <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg></button>
+                    </form>
+                </div>
+                <div class="shop__sidebar__accordion">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-heading">
+                                <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
                             </div>
+                            <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__categories">
+                                        <ul class="nice-scroll">
+                                            <li><a href="#">Men (20)</a></li>
+                                            <li><a href="#">Women (20)</a></li>
+                                            <li><a href="#">Bags (20)</a></li>
+                                            <li><a href="#">Clothing (20)</a></li>
+                                            <li><a href="#">Shoes (20)</a></li>
+                                            <li><a href="#">Accessories (20)</a></li>
+                                            <li><a href="#">Kids (20)</a></li>
+                                            <li><a href="#">Kids (20)</a></li>
+                                            <li><a href="#">Kids (20)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-heading">
+                                <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
+                            </div>
+                            <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__brand">
+                                        <ul>
+                                            <li><a href="#">Louis Vuitton</a></li>
+                                            <li><a href="#">Chanel</a></li>
+                                            <li><a href="#">Hermes</a></li>
+                                            <li><a href="#">Gucci</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-heading">
+                                <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
+                            </div>
+                            <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__price">
+                                        <ul>
+                                            <li><a href="#">$0.00 - $50.00</a></li>
+                                            <li><a href="#">$50.00 - $100.00</a></li>
+                                            <li><a href="#">$100.00 - $150.00</a></li>
+                                            <li><a href="#">$150.00 - $200.00</a></li>
+                                            <li><a href="#">$200.00 - $250.00</a></li>
+                                            <li><a href="#">250.00+</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="shop__product__option">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="shop__product__option__right">
+                            <p>Tìm Kiếm Nhanh Theo Giá</p>
+                            <select>
+                                <option value="">Low To High</option>
+                                <option value="">$0 - $55</option>
+                                <option value="">$55 - $100</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9">
-                    <div class="shop__product__option">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="shop__product__option__left">
-                                    <p>Showing 1–12 of 126 results</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="shop__product__option__right">
-                                    <p>Sort by Price:</p>
-                                    <select>
-                                        <option value="">Low To High</option>
-                                        <option value="">$0 - $55</option>
-                                        <option value="">$55 - $100</option>
-                                    </select>
-                                </div>
-                            </div>
+            </div>
+
+
+            <style>
+                .product__item {
+                    background-color: rgb(0, 150, 200);
+                    height: 200px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    border-radius: 15px;
+                }
+
+                .product__item>div {
+                    text-align: center;
+                    padding: 10px;
+                    /* Điều chỉnh padding nếu cần thiết */
+                }
+                label{
+                    padding-bottom: 20px;
+                }
+
+                /* Tùy chỉnh kiểu dáng cho các phần tử cụ thể */
+                .mave,
+                .xuatphat,
+                .timedi,
+                .timeve,
+                .thoigianbay,
+                .dichden {
+                    flex: 1;
+                    
+                    /* Phần tử sẽ chiếm đủ không gian ngang */
+                }
+
+                /* Điều chỉnh kiểu dáng của các tiêu đề */
+                h3,
+                h4 {
+                    margin: 0;
+                    /* Loại bỏ margin mặc định */
+                }
+                a{
+                    color: white;
+                }
+            </style>
+
+
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="mave">
+                            <label for="">Mã Vé</label>
+                            <h3>001</h3>
+                        </div>
+                        <div class="xuatphat">
+                        <label for="">Điểm ĐI</label>
+                            <h4>Vũng Tàu</h4>
+                        </div>
+                        <div class="timedi">
+                        <label for="">Thời Gian Bay</label>
+                            2020-01-01
+                        </div>
+                        <div class="timeve">
+                            <label for="">Thời Gian Về</label>
+                            20:00:00
+                        </div>
+                        <div class="thoigianbay">
+                        <label for="">Thời Gian Bay</label>
+                            20:00:00
+                        </div>
+                        <div class="dichden">
+                        <label for="">Điểm Đến</label>
+                            <h4>Sài Gòn</h4>
+                        </div>
+                        <a href="">Xem chi tiết</a>
+                    </div>
+                </div>
+
+
+
+                <!-- một vé ---------------------------------------------------------------------------------------------------------------------------------------->
+
+
+                <div class="col-lg-12 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="mave">
+                            <label for="">Mã Vé</label>
+                            <h3>001</h3>
+                        </div>
+                        <div class="xuatphat">
+                        <label for="">Điểm ĐI</label>
+                            <h4>Vũng Tàu</h4>
+                        </div>
+                        <div class="timedi">
+                        <label for="">Thời Gian Bay</label>
+                            2020-01-01
+                        </div>
+                        <div class="timeve">
+                            <label for="">Thời Gian Về</label>
+                            20:00:00
+                        </div>
+                        <div class="thoigianbay">
+                        <label for="">Thời Gian Bay</label>
+                            20:00:00
+                        </div>
+                        <div class="dichden">
+                        <label for="">Điểm Đến</label>
+                            <h4>Sài Gòn</h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Piqué Biker Jacket</h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$67.24</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-4">
-                                            <input type="radio" id="pc-4">
-                                        </label>
-                                        <label class="active black" for="pc-5">
-                                            <input type="radio" id="pc-5">
-                                        </label>
-                                        <label class="grey" for="pc-6">
-                                            <input type="radio" id="pc-6">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                </div>
+
+
+                <div class="col-lg-12 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="mave">
+                            <label for="">Mã Vé</label>
+                            <h3>001</h3>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="xuatphat">
+                        <label for="">Điểm ĐI</label>
+                            <h4>Vũng Tàu</h4>
+                        </div>
+                        <div class="timedi">
+                        <label for="">Thời Gian Bay</label>
+                            2020-01-01
+                        </div>
+                        <div class="timeve">
+                            <label for="">Thời Gian Về</label>
+                            20:00:00
+                        </div>
+                        <div class="thoigianbay">
+                        <label for="">Thời Gian Bay</label>
+                            20:00:00
+                        </div>
+                        <div class="dichden">
+                        <label for="">Điểm Đến</label>
+                            <h4>Sài Gòn</h4>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-12 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="mave">
+                            <label for="">Mã Vé</label>
+                            <h3>001</h3>
+                        </div>
+                        <div class="xuatphat">
+                        <label for="">Điểm ĐI</label>
+                            <h4>Vũng Tàu</h4>
+                        </div>
+                        <div class="timedi">
+                        <label for="">Thời Gian Bay</label>
+                            2020-01-01
+                        </div>
+                        <div class="timeve">
+                            <label for="">Thời Gian Về</label>
+                            20:00:00
+                        </div>
+                        <div class="thoigianbay">
+                        <label for="">Thời Gian Bay</label>
+                            20:00:00
+                        </div>
+                        <div class="dichden">
+                        <label for="">Điểm Đến</label>
+                            <h4>Sài Gòn</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item sale">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
                                     <span class="label">Sale</span>
@@ -639,9 +685,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
+                        </div> -->
+            </div>
+            <!-- <div class="row">
                         <div class="col-lg-12">
                             <div class="product__pagination">
                                 <a class="active" href="#">1</a>
@@ -651,8 +697,8 @@
                                 <a href="#">21</a>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
         </div>
-    <!-- Shop Section End -->
+    </div>
+</div>
+<!-- Shop Section End -->

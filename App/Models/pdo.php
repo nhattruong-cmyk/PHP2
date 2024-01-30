@@ -12,7 +12,6 @@ class Connect
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     }
-
     function pdo_execute($sql)
     {
         $sql_args = array_slice(func_get_args(), 1);

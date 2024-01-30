@@ -4,15 +4,15 @@ session_start();
 $protocol =  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https://" : "http://");
 $ROOT_URL = $protocol . $_SERVER['HTTP_HOST'];
 
-//Admin
-$ASSETS_URL = $ROOT_URL . "/admin/public/assets";
+// //Admin
+// $ASSETS_URL = $ROOT_URL . "/admin/public/assets";
 
-//Client
-$PUBLIC_URL  = $ROOT_URL . "/public";
+// //Client
+// $PUBLIC_URL  = $ROOT_URL . "/public";
 
-$UPLOAD_URL  = $ROOT_URL . "/upload";
+// $UPLOAD_URL  = $ROOT_URL . "/upload";
 
-$IMAGE_DIR   = $_SERVER["DOCUMENT_ROOT"] . "/public/img/product/";
+// $IMAGE_DIR   = $_SERVER["DOCUMENT_ROOT"] . "/public/img/product/";
 
 function show_array($data)
 {

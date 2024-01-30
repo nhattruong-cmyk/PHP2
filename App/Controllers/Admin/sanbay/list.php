@@ -40,9 +40,8 @@
                                         <?= $ThongTinLienHe ?>
                                     </td>
                                     <td>
-                                        <a class="dropdown-item" href="?pages=edit_cate&cate_id=<?= $MaSanBay ?>">Edit</a>
-                                        <a class="dropdown-item"
-                                            href="?pages=delete_cate&cate_id=<?= $MaSanBay ?>">Delete</a>
+                                        <a class="dropdown-item" href="?pages=edit_sanbay&MaSanBay=<?= $MaSanBay ?>">Edit</a>
+                                        <a class="dropdown-item" href="#" onclick="confirmDelete(<?= $MaSanBay ?>)">Delete</a>
                                     </td>
                                 </tr>
                                 <?php
@@ -55,3 +54,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    function confirmDelete($MaSanBay) {
+        // Sử dụng hàm confirm để hiển thị hộp thoại xác nhận
+        var isConfirmed = confirm("Bạn có chắc chắn muốn xóa không?");
+
+        // Nếu người dùng click vào "OK", thì chuyển đến hàm xóa
+        if (isConfirmed) {
+            // Chuyển đến hàm xóa, có thể là hàm xóa của bạn
+            // Ví dụ: deleteCategory(cateId);
+            window.location.href = "?pages=delete_sanbay&MaSanBay=" + $MaSanBay;
+        }
+        // Nếu người dùng click vào "Cancel", không thực hiện gì cả
+    }
+</script>

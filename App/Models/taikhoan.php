@@ -3,29 +3,29 @@
 class TaiKhoan extends Connect{
 
         //Insert TaiKhoan
-        function taikhoan_insert($MaNguoiDung,$TenNguoiDung,$MatKhau,$QuyenTruyCap)
+        function taikhoan_insert($TenNguoiDung,$MatKhau,$QuyenTruyCap)
         {
-            $sql = "INSERT INTO nguoidung(`MaNguoiDung`,`TenNguoiDung`,`MatKhau`,`QuyenTruyCap`) VALUES(?,?,?,?)";
-            $this->pdo_execute($sql,$MaNguoiDung,$TenNguoiDung,$MatKhau,$QuyenTruyCap);
+            $sql = "INSERT INTO nguoidung(`TenNguoiDung`,`MatKhau`,`QuyenTruyCap`) VALUES(?,?,?)";
+            $this->pdo_execute($sql,$TenNguoiDung,$MatKhau,$QuyenTruyCap);
         }
 
         //Update
-        function taikhoan_update($Mataikhoan, $Tentaikhoan,$DiaChi,$ThongTinLienHe)
+        function taikhoan_update($MaNguoiDung, $TenNguoiDung,$MatKhau,$QuyenTruyCap)
         {
-            $sql = "UPDATE `taikhoan` SET `Tentaikhoan`=?,`DiaChi`=?,`ThongTinLienHe` WHERE `Mataikhoan`=?";
-            $this->pdo_execute($sql,$Tentaikhoan,$DiaChi,$ThongTinLienHe,$Mataikhoan);
+            $sql = "UPDATE `nguoidung` SET `TenNguoiDung`=?,`MatKhau`=?,`QuyenTruyCap`=? WHERE `MaNguoiDung`=?";
+            $this->pdo_execute($sql,$TenNguoiDung,$MatKhau,$QuyenTruyCap,$MaNguoiDung);
         }
 
         //Delete
-        function taikhoan_delete($Mataikhoan)
+        function taikhoan_delete($MaNguoiDung)
         {
-            $sql = "DELETE FROM `taikhoan` WHERE `$Mataikhoan`=?";
-            if (is_array($Mataikhoan)) {
-                foreach ($Mataikhoan as $id) {
+            $sql = "DELETE FROM `taikhoan` WHERE `$MaNguoiDung`=?";
+            if (is_array($MaNguoiDung)) {
+                foreach ($MaNguoiDung as $id) {
                     $this->pdo_execute($sql, $id);
                 }
             } else {
-                $this->pdo_execute($sql, $Mataikhoan);
+                $this->pdo_execute($sql, $MaNguoiDung);
             }
         }
 
@@ -48,10 +48,10 @@ class TaiKhoan extends Connect{
             return $this->pdo_query($sql);
         }
 
-        function taikhoan_select_by_id($Mataikhoan)
+        function taikhoan_select_by_id($MaNguoiDung)
         {
-            $sql = "SELECT * FROM taikhoan WHERE Mataikhoan=?";
-            return $this->pdo_query_one($sql, $Mataikhoan);
+            $sql = "SELECT * FROM nguoidung WHERE MaNguoiDung=?";
+            return $this->pdo_query_one($sql, $MaNguoiDung);
         }
         
         function taikhoan_select_by_parent_id($parent_id)

@@ -2,8 +2,11 @@
 ob_start();
 
 require "./global.php";
-require "App/Models/pdo.php";
-require "App/Models/taikhoan.php";
+require "./App/Models/pdo.php";
+require "./App/Models/taikhoan.php";
+require "./App/Models/sanbay.php";
+require "./App/Models/ve.php";
+
 
 $pages = isset($_GET['pages']) ? $_GET['pages'] : 'home';
 

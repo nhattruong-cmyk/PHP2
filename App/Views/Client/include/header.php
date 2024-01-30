@@ -97,7 +97,7 @@ https://templatemo.com/tm-591-villa-agency
               if (!empty($_SESSION['user'])) {
                 $retrieved_data = unserialize($_SESSION['user']);
 
-                if ($retrieved_data['QuyenTruyCap'] == "Quản trị viên") {
+                if ($retrieved_data['QuyenTruyCap'] == 1) {
                   // If the user is an administrator, redirect to the admin page
                   echo '<div class="xinchao">Xin chào ' . $retrieved_data['TenNguoiDung'] . '-> <a href="App/Controllers/Admin/index.php">Admin</a></div>
                  

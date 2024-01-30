@@ -1,3 +1,10 @@
+<?php
+$sanbay = new SanBay();
+$ve = new Ve();
+$list_ve = $ve->ve_select_all();
+$list_sanbay = $sanbay->sanbay_select_all();
+?>
+
 <div class="container text-center">
   <div class="main-banner">
     <!-- form booking -------------------------------------------------------------------------------------------->
@@ -7,27 +14,43 @@
         <h4 class="cau2">"Tận hưởng chuyến đi hoàn hảo - Đặt vé máy bay, bay đến giấc mơ của bạn!"</h4>
       </div>
       <div class="booking-form">
-        <div class="select-box" id="ticketType">
-          <label for="ticket">Loại Vé:</label>
-          <select id="ticket">
-            <option value="oneWay">Một chiều</option>
-            <option value="roundTrip">Khứ hồi</option>
+        <div class="select-box" id="departure">
+          <label for="from">Loại vé:</label>
+          <select id="ve-org" name="LoaiVe" class="select2 form-select" data-placeholder="Select Category"
+            tabindex="-1">
+            <option selected disabled>Chọn Vé</option>
+            <option value="0">Một Chiều</option>
+            <option value="1">Khứ Hồi</option>
           </select>
         </div>
+
 
         <div class="select-box" id="departure">
           <label for="from">Điểm đi:</label>
-          <select id="from">
-            <option value="airport1">Sân bay 1</option>
-            <option value="airport2">Sân bay 2</option>
+          <select id="masanbay-org" name="MaSanBay" class="select2 form-select " data-placeholder="Select Category"
+            data-select2-id="category-org" tabindex="-1">
+            <option selected value="1">Chọn Mã</option>
+            <?php
+            foreach ($list_sanbay as $item) {
+              extract($item); ?>
+              <option value=<?= $MaSanBay ?>><?= $MaSanBay . " - " . $TenSanBay ?></option>
+              <?php
+            }
+            ?>
           </select>
         </div>
-
-        <div class="select-box" id="destination">
-          <label for="to">Điểm đến:</label>
-          <select id="to">
-            <option value="airport3">Sân bay 3</option>
-            <option value="airport4">Sân bay 4</option>
+        <div class="select-box" id="return">
+          <label for="from">Điểm Đến:</label>
+          <select id="masanbay-org" name="MaSanBay" class="select2 form-select " data-placeholder="Select Category"
+            data-select2-id="category-org" tabindex="-1">
+            <option selected value="1">Chọn Mã</option>
+            <?php
+            foreach ($list_sanbay as $item) {
+              extract($item); ?>
+              <option value=<?= $MaSanBay ?>><?= $MaSanBay . " - " . $TenSanBay ?></option>
+              <?php
+            }
+            ?>
           </select>
         </div>
 
@@ -38,8 +61,9 @@
 
         <div class="select-box" id="returnTime">
           <label for="returnTime">Thời gian về:</label>
-          <input type="datetime-local" id="returnTime">
+          <input type="datetime-local" id="departTime">
         </div>
+
         <div class="select-box" id="returnTime">
           <button class="search-btn" onclick="searchFlights()">Tìm Kiếm</button>
         </div>
@@ -72,8 +96,9 @@
                   <div class="text-end my-auto pe-4">
                     <h3 class="text-primary mb-3">Phương Tiện</h3>
                     <p class="text-dark mb-0" style="line-height: 30px;">
-                  "Phương tiện di chuyển không chỉ là phương pháp để đến đích mà còn là những chuyến hành trình đầy ý nghĩa, 
-                  nắm giữ những khoảnh khắc độc đáo ."
+                      "Phương tiện di chuyển không chỉ là phương pháp để đến đích mà còn là những chuyến hành trình đầy
+                      ý nghĩa,
+                      nắm giữ những khoảnh khắc độc đáo ."
                     </p>
                   </div>
                   <img src="public/assets/images/banner-01.jpg" class="img-fluid img-border" alt="">
@@ -90,8 +115,9 @@
                   <div class="my-auto ps-4">
                     <h3 class="text-primary mb-3">Cảnh Đẹp</h3>
                     <p class="text-dark mb-0" style="line-height: 30px;">
-                    "Những chuyến phiêu lưu khám phá thế giới không chỉ mở rộng tầm nhìn
-                     của chúng ta mà còn có thể là cơ hội để tình yêu nở rộ, với những kí ức đẹp như những địa điểm chúng ta đã đến."
+                      "Những chuyến phiêu lưu khám phá thế giới không chỉ mở rộng tầm nhìn
+                      của chúng ta mà còn có thể là cơ hội để tình yêu nở rộ, với những kí ức đẹp như những địa điểm
+                      chúng ta đã đến."
                     </p>
                   </div>
                 </div>
@@ -108,8 +134,8 @@
     <!-- banner --------------------------------------------------------------------------------------------------------------------------------------->
 
     <div class="row">
-        <h1>Vẻ Đẹp Ưu Tú</h1>
-      </div>
+      <h1>Vẻ Đẹp Ưu Tú</h1>
+    </div>
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"

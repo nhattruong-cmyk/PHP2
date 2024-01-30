@@ -15,8 +15,6 @@
                                 <th scope="col">MaSanBayDen</th>
                                 <th scope="col">NgayGioXuatPhat</th>
                                 <th scope="col">NgayGioDen</th>
-                                <th scope="col">SoGheTrong</th>
-                                <th scope="col">TongSoGhe</th>
                                 <th scope="col">Action</th>
 
                             </tr>
@@ -46,14 +44,10 @@
                                     <td>
                                         <?= $NgayGioDen ?>
                                     </td>
+                                    
+                                    
                                     <td>
-                                        <?= $SoGheTrong ?>
-                                    </td>
-                                    <td>
-                                        <?= $TongSoGhe ?>
-                                    </td>
-                                    <td>
-                                        <a class="dropdown-item" href="?pages=edit_cate&cate_id=<?= $MaChuyenBay ?>">Edit</a>
+                                        <a class="dropdown-item" href="?pages=edit_chuyenbay&MaChuyenBay=<?= $MaChuyenBay ?>">Edit</a>
                                         <a class="dropdown-item"
                                             href="?pages=delete_cate&cate_id=<?= $MaChuyenBay ?>">Delete</a>
                                     </td>

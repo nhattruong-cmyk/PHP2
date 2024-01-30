@@ -37,10 +37,10 @@
                                         <?= $MatKhau ?>
                                     </td>
                                     <td>
-                                        <?= $QuyenTruyCap ?>
+                                        <?= ($QuyenTruyCap == 1) ? 'Admin' : (($QuyenTruyCap == 2) ? 'User' : 'Chưa Chọn') ?>
                                     </td>
                                     <td>
-                                        <a class="dropdown-item" href="?pages=edit_cate&cate_id=<?= $MaNguoiDung ?>">Edit</a>
+                                        <a class="dropdown-item" href="?pages=form-update-taikhoan&MaNguoiDung=<?= $MaNguoiDung ?>">Edit</a>
                                         <a class="dropdown-item"
                                             href="?pages=delete_tk&tk_id=<?= $MaNguoiDung ?>">Delete</a>
                                     </td>

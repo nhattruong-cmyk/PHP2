@@ -24,6 +24,24 @@ function check_tensanbay($TenSanBay)
     }
     return false;
 }
+function check_tennguoidung($TenNguoiDung)
+{
+    $pattern = "/^[A-Za-z0-9\s]+$/";
+    if (preg_match($pattern, $TenNguoiDung)) {
+        return true;
+    }
+    return false;
+}
+
+//Check LoaiVe
+function check_LoaiVe($LoaiVe)
+{
+    $pattern = "/^[A-Za-z0-9\s]+$/";
+    if (preg_match($pattern, $LoaiVe)) {
+        return true;
+    }
+    return false;
+}
 
 // Check MaSanBay
 function check_masanbay($MaSanBay)
@@ -63,8 +81,25 @@ function check_matkhau($MatKhau)
     }
 }
 
+// Check MaNguoiDung
+function check_MaNguoiDung($MaNguoiDung)
+{
+    $pattern = "/^[0-9]/";
+    if (preg_match($pattern, $MaNguoiDung)) {
+        return true;
+    }
+    return false;
+}
 
-
+// Check MaVe
+function check_MaVe($MaVe)
+{
+    $pattern = "/^[0-9]/";
+    if (preg_match($pattern, $MaVe)) {
+        return true;
+    }
+    return false;
+}
 
 //Function check form add sanbay------------------------------------------------------------------------------------------------------------------
 function check_form_add_sanbay()
@@ -140,151 +175,275 @@ function check_form_add_sanbay()
     
 }
 
+//Function check form update sanbay------------------------------------------------------------------------------------------------------------------
+function check_form_update_sanbay()
 
 
+{
+    global $IMAGE_DIR;
+    $error = [];
+    $TenSanBay = $_POST['TenSanBay'];
+    $MaSanBay = $_POST['MaSanBay'];
+    $DiaChi = $_POST['DiaChi'];
+    $ThongTinLienHe = $_POST['ThongTinLienHe'];
+    //---------------Check TenSanBay---------------
+    if (!empty($TenSanBay)) {
+        if (!check_tensanbay($TenSanBay)) {
+            $error['error_tensanbay'] = 'The tensanbay has an incorect format!';
+        }
+    } else {
+        $error['error_tensanbay'] = 'The tensanbay can’t be empty!';
+    }
 
-
-//     //---------------Check form update user---------------
-
-// function check_form_update_customer()
-// {
-//     global $IMAGE_DIR;
-//     $error = [];
-//     $user_id = $_POST['user_id'];
-//     $username = $_POST['username'];
-//     $password = $_POST['password'];
-//     $confirm_password = $_POST['confirm_password'];
-//     $fullname = $_POST['fullname'];
-//     $email = $_POST['email'];
-//     $phone = $_POST['phone'];
-//     $address = $_POST['address'];
-//     $role_id = $_POST['role_id'];
-//     // $up_hinh = save_file("avatar", $IMAGE_DIR);
-//     // $avatar = strlen($up_hinh) > 0 ? $up_hinh : 'product_default.png';
-
-//     //---------------Check username---------------
-//     if (!empty($username)) {
-//         if (!check_username($username)) {
-//             $error['error_username'] = 'The username has an incorect format!';
-//         }
-//     } else {
-//         $error['error_username'] = 'The username can’t be empty!';
-//     }
-
-//     //---------------Check fullanme---------------
-//     if (!empty($fullname)) {
-//         if (strlen($fullname) > 40) {
-//             $error['error_name'] = 'The fullname too long!';
-//         }
-//     } else {
-//         $error['error_name'] = 'The fullname can’t be empty!';
-//     }
-
-//     //---------------Check password---------------
-//     if (!empty($password)) {
-//         if (!check_password($password)) {
-//             $error['error_pass'] = 'The password has an incorect format!';
-//         }
-//     } else {
-//         $error['error_pass'] = 'The password can’t be empty!';
-//     }
-
-//     //---------------Confirm password---------------
+    // ---------------Check masanbay---------------
+    if (!empty($MaSanBay)) {
+        if (strlen($MaSanBay) > 10) {
+            $error['error_masanbay'] = 'The masanbay is too long!';
+        } elseif (!preg_match("/^[0-9]/", $MaSanBay)) {
+            $error['error_masanbay'] = 'Invalid characters in masanbay! Please use only numeric digits.';
+        }
+    } else {
+        $error['error_masanbay'] = 'The masanbay can’t be empty!';
+    }
     
-//     if (!empty($confirm_password)) {
-//         if ($confirm_password != $password) {
-//             $error['error_conf_pass'] = 'Phải trùng password!';
-//         }
-//     } else {
-//         $error['error_conf_pass'] = 'The confirm password don’t match!';
-//     }
-//     //---------------Check sđt---------------
 
-//     if (!empty($phone)) {
-//         if (!is_numeric($phone)) {
-//             $error['error_phone'] = 'The phone number must be a number!';
-//         } else {
-//             if ($phone < 0) {
-//                 $error['error_phone'] = 'The phone number must be more than 0!';
-//             }
-//         }
-//     } else {
-//         $error['error_phone'] = 'The phone number can’t be empty!';
-//     }
+    //---------------Check DiaChi---------------
+    if (!empty($DiaChi)) {
+        if($DiaChi < 0){
+            $error['error_diachi'] = 'The diachi must be not be more 0!';
+        }else{
+            if(strlen($DiaChi)>50){
+                $error['error_diachi'] = 'The diachi too long!';
+            }
+        }
+    }else{
+        $error['error_diachi'] = 'The diachi can’t be empty!';
+    }
+  //---------------Check ThongTinLienHe---------------
+  if (!empty($ThongTinLienHe)) {
+    if($ThongTinLienHe < 0){
+        $error['error_thongtinlienhe'] = 'The thongtinlienhe must be not be more 0!';
+    }else{
+        if(strlen($ThongTinLienHe)>50){
+            $error['error_thongtinlienhe'] = 'The thongtinlienhe too long!';
+        }
+    }
+}else{
+    $error['error_thongtinlienhe'] = 'The thongtinlienhe can’t be empty!';
+}
+    if (!empty($error)) {
+        $value = [
+            'error' => $error
+        ];
+        return $value;
 
-//     //---------------Check address---------------
-//     if (!empty($address)) {
-//         if($address < 0){
-//             $error['error_address'] = 'The address must be not be more 0!';
-//         }else{
-//             if(strlen($address)>50){
-//                 $error['error_address'] = 'The address too long!';
-//             }
-//         }
-//     }else{
-//         $error['error_address'] = 'The address can’t be empty!';
-//     }
+    } else {
+        $value = [
+            'TenSanBay' => $TenSanBay,
+            'MaSanBay' => $MaSanBay,
+            'DiaChi' => $DiaChi,
+            'ThongTinLienHe' => $ThongTinLienHe
+        ];
+        return $value;
+    }
+    
+}
 
-//     //---------------Check email---------------
-//     if (!empty($email)) {
-//         if (!check_email($email)) {
-//             $error['error_email'] = 'The email address has an incorect format!';
-//         }
-//     } else {
-//         $error['error_email'] = 'The email address can’t be empty!';
-//     }
 
-//     if (!empty($error)) {
-//         $value = [
-//             'error' => $error
-//         ];
-//         return $value;
+//Function check form add Ve------------------------------------------------------------------------------------------------------------------
+function check_form_add_ve()
+{
+    global $IMAGE_DIR;
+    $error = [];
+    // $MaVe = $_POST['MaVe'];
+ 
+// Kiểm tra xem LoaiVe có tồn tại trong $_POST hay không
+if (isset($_POST['LoaiVe'])) {
+    $LoaiVe = $_POST['LoaiVe'];
+    // Tiếp tục xử lý dữ liệu nếu cần
+} else {
+    // Xử lý khi LoaiVe không tồn tại
+    $error['error_LoaiVe'] = 'Vui lòng chọn Loại Vé!';
+}
 
-//     } else {
-//         $value = [
-//             'user_id' => $user_id,
-//             'username' => $username,
-//             'fullname' => $fullname,
-//             'password' => $password,
-//             'phone' => $phone,
-//             'email' => $email,
-//             'address' => $address,
-//             // 'avatar' => $avatar,
-//             'role_id' => $role_id
-//         ];
-//         return $value;
-//     }
-// }
+
+// Kiểm tra xem MaSanBayXuatPhat có tồn tại trong $_POST hay không
+if (isset($_POST['MaChuyenBay'])) {
+    $MaChuyenBay = $_POST['MaChuyenBay'];
+    // Tiếp tục xử lý dữ liệu nếu cần
+} else {
+    // Xử lý khi MaSanBayXuatPhat không tồn tại
+    $error['error_MaChuyenBay'] = 'Vui lòng chọn MaSanBayDen!';
+}
+
+    $GiaVe = $_POST['GiaVe'];
+
+    //---------------Check LoaiVe---------------
+    if (empty($LoaiVe)) {
+        $error['error_LoaiVe'] = 'The LoaiVe can’t be empty!';
+    }
+    // ---------------Check MaChuyenBay---------------
+    if (empty($MaChuyenBay)) {
+        $error['error_MaChuyenBay'] = 'The MaChuyenBay can’t be empty!';
+    }
+
+
+//---------------Check GiaVe---------------
+if (!empty($GiaVe)) {
+    if (!is_numeric($GiaVe) || $GiaVe <= 0) {
+        $error['error_GiaVe'] = 'Giá Vé phải là số nguyên dương!';
+    }
+} else {
+    $error['error_GiaVe'] = 'Giá vé không được để trống!';
+}
+
+    if (!empty($error)) {
+        $value = [
+            'error' => $error
+        ];
+        return $value;
+
+    } else {
+        $value = [
+            
+            'MaChuyenBay' => $MaChuyenBay,
+            'LoaiVe' => $LoaiVe,
+            'GiaVe' => $GiaVe
+
+        ];
+        return $value;
+    }
+    
+}
+
+//Function check form update Ve------------------------------------------------------------------------------------------------------------------
+function check_form_update_ve()
+{
+    global $IMAGE_DIR;
+    $error = [];
+
+    // Kiểm tra và gán giá trị cho MaVe
+    $MaVe = isset($_POST['MaVe']) ? $_POST['MaVe'] : null;
+    if (empty($MaVe)) {
+        $error['error_MaVe'] = 'Vui lòng chọn MaVe!';
+    }
+
+    // Kiểm tra và gán giá trị cho LoaiVe
+    $LoaiVe = isset($_POST['LoaiVe']) ? $_POST['LoaiVe'] : null;
+    if (empty($LoaiVe)) {
+        $error['error_LoaiVe'] = 'Vui lòng chọn Loại Vé!';
+    }
+
+    // Kiểm tra và gán giá trị cho MaChuyenBay
+    $MaChuyenBay = isset($_POST['MaChuyenBay']) ? $_POST['MaChuyenBay'] : null;
+    if (empty($MaChuyenBay)) {
+        $error['error_MaChuyenBay'] = 'Vui lòng chọn MaChuyenBay!';
+    }
+
+    // Kiểm tra và gán giá trị cho GiaVe
+    $GiaVe = isset($_POST['GiaVe']) ? $_POST['GiaVe'] : null;
+    if (!empty($GiaVe)) {
+        if (!is_numeric($GiaVe) || $GiaVe <= 0) {
+            $error['error_GiaVe'] = 'Giá Vé phải là số nguyên dương!';
+        }
+    } else {
+        $error['error_GiaVe'] = 'Giá vé không được để trống!';
+    }
+
+    if (!empty($error)) {
+        $value = [
+            'error' => $error
+        ];
+        return $value;
+    } else {
+        $value = [
+            'MaVe' => $MaVe,
+            'MaChuyenBay' => $MaChuyenBay,
+            'LoaiVe' => $LoaiVe,
+            'GiaVe' => $GiaVe
+        ];
+        return $value;
+    }
+}
+
+
+function check_form_add_chuyenbay()
+{
+    global $IMAGE_DIR;
+    $error = [];
+    $MaSanBay = isset($_POST['MaSanBay']) ? $_POST['MaSanBay'] : null;
+    $MaSanBayXuatPhat = isset($_POST['MaSanBay']) ? $_POST['MaSanBay'] : null;
+    $MaSanBayDen = isset($_POST['MaSanBay']) ? $_POST['MaSanBay'] : null;
+
+    $NgayGioDen = isset($_POST['NgayGioDen']) ? $_POST['NgayGioDen'] : null;
+    $NgayGioXuatPhat = isset($_POST['NgayGioXuatPhat']) ? $_POST['NgayGioXuatPhat'] : null;
+
+    // Kiểm tra masanbay
+    if (empty($MaSanBay)) {
+        $error['error_masanbay'] = 'The masanbay can’t be empty!';
+    } elseif (strlen($MaSanBay) > 10 || !is_numeric($MaSanBay)) {
+        $error['error_masanbay'] = 'Invalid masanbay! Please use only numeric digits and keep it within 10 characters.';
+    }
+
+    // Kiểm tra kiểu dữ liệu của NgayGioDen và NgayGioXuatPhat (nếu cần)
+    if (!empty($NgayGioDen) && !strtotime($NgayGioDen)) {
+        $error['error_NgayGioDen'] = 'Invalid NgayGioDen format!';
+    }
+
+    if (!empty($NgayGioXuatPhat) && !strtotime($NgayGioXuatPhat)) {
+        $error['error_NgayGioXuatPhat'] = 'Invalid NgayGioXuatPhat format!';
+    }
+
+    if (!empty($error)) {
+        return ['error' => $error];
+    } else {
+        return [
+            'MaSanBay' => $MaSanBay,
+            'MaSanBayXuatPhat' => $MaSanBayXuatPhat,
+            'MaSanBayDen' => $MaSanBayDen,
+            'NgayGioXuatPhat' => $NgayGioXuatPhat,
+            'NgayGioDen' => $NgayGioDen
+        ];
+    }
+}
 
 
 // Function check form add Nguoidung-------------------------------------------------------------------------------------------------------------------
 function check_form_add_taikhoan()
 {
     $error = [];
-    $TenNguoiDung = $_POST['TenNguoiDung'];
-    $MaNguoiDung = $_POST['MaNguoiDung'];
+    if (isset($_POST['TenNguoiDung'])) {
+        // Now you can safely use $_POST['TenNguoiDung']
+        $TenNguoiDung = $_POST['TenNguoiDung'];
+    } else {
+        // Handle the case when 'TenNguoiDung' is not set
+    }
+
+    // Kiểm tra xem LoaiVe có tồn tại trong $_POST hay không
+if (isset($_POST['QuyenTruyCap'])) {
+    $QuyenTruyCap = $_POST['QuyenTruyCap'];
+    // Tiếp tục xử lý dữ liệu nếu cần
+} else {
+    // Xử lý khi LoaiVe không tồn tại
+    $error['error_QuyenTruyCap'] = 'Vui lòng chọn Loại Vé!';
+}
+    
     $MatKhau = $_POST['MatKhau'];
 
 
     //---------------Check TenNguoiDung---------------
     if (!empty($TenNguoiDung)) {
-        if (!check_tensanbay($TenNguoiDung)) {
+        if (!check_tennguoidung($TenNguoiDung)) {
             $error['error_tennguoidung'] = 'The tennguoidung has an incorect format!';
         }
     } else {
         $error['error_tennguoidung'] = 'The tennguoidung can’t be empty!';
     }
-//---------------Check manguoidung---------------
-if (!empty($MaNguoiDung)) {
-    if (strlen($MaNguoiDung) > 10) {
-        $error['error_manguoidung'] = 'The manguoidung is too long!';
-    } elseif (!preg_match("/^[0-9]/", $MaNguoiDung)) {
-        $error['error_manguoidung'] = 'Invalid characters in manguoidung! Please use only numeric digits.';
-    }
-} else {
-    $error['error_manguoidung'] = 'The manguoidung can’t be empty!';
-}
 
+
+if (empty($QuyenTruyCap)) {
+    $error['error_QuyenTruyCap'] = 'The QuyenTruyCap can’t be empty!';
+}
  //---------------Check password---------------
     if (!empty($MatKhau)) {
         if (!check_matkhau($MatKhau)) {
@@ -303,223 +462,59 @@ if (!empty($MaNguoiDung)) {
     } else {
         $value = [
             'TenNguoiDung' => $TenNguoiDung,
-            'MaNguoiDung' => $MaNguoiDung,
+            'QuyenTruyCap' => $QuyenTruyCap,
             'MatKhau' => $MatKhau
         ];
         return $value;
     }
 }
-function check_form_update_category()
+
+
+function check_form_update_taikhoan()
 {
     $error = [];
-    $cate_id = $_POST['cate_id'];
-    $cate_name = $_POST['cate_name'];
-    $parent_id = $_POST['parent_id'];
-
-    if (!empty($cate_name)) {
-        if (is_numeric($cate_name)) {
-            $error['error_name_cate'] = 'The category name must be a letter!';
-        } else {
-            $cate_name = $cate_name;
-        }
+    $MaNguoiDung = $_POST['MaNguoiDung'];
+    if (isset($_POST['TenNguoiDung'])) {
+        // Now you can safely use $_POST['TenNguoiDung']
+        $TenNguoiDung = $_POST['TenNguoiDung'];
     } else {
-        $error['error_name_cate'] = 'The category name can’t be empty!';
+        // Handle the case when 'TenNguoiDung' is not set
     }
 
-    if (!empty($error)) {
-        $value = [
-            'error' => $error
-        ];
-        return $value;
-    } else {
-        $value = [
-            'cate_id' => $cate_id,
-            'cate_name' => $cate_name,
-            'parent_id' => $parent_id,
-        ];
-        return $value;
-    }
+    // Kiểm tra xem LoaiVe có tồn tại trong $_POST hay không
+if (isset($_POST['QuyenTruyCap'])) {
+    $QuyenTruyCap = $_POST['QuyenTruyCap'];
+    // Tiếp tục xử lý dữ liệu nếu cần
+} else {
+    // Xử lý khi LoaiVe không tồn tại
+    $error['error_QuyenTruyCap'] = 'Vui lòng chọn Loại Vé!';
 }
-
-// Function check form add product
-function check_form_add_product()
-{
-    global $IMAGE_DIR;
-    $error = [];
-
-    $cate_id = $_POST['cate_id'];
-    $product_name = $_POST['product_name'];
-    $price = $_POST['price'];
-    $discount = $_POST['discount'];
-    $quantity = $_POST['quantity'];
-    $description = $_POST['description'];
-    // $up_hinh = save_file("images", $IMAGE_DIR);
-    // $images = strlen($up_hinh) > 0 ? $up_hinh : 'product_default.png';
-
-    //Check name of product
-    if (!empty($product_name)) {
-        if (is_numeric($product_name)) {
-            $error['name_error'] = 'The product name must be a letter!';
-        }
-    } else {
-        $error['name_error'] = 'The product name can’t be empty!';
-    }
-
-    //Check price of product
-    if (!empty($price)) {
-        if (!is_numeric($price)) {
-            $error['price_error'] = 'The price must be a number!';
-        } else {
-            if ($price < 0) {
-                $error['price_error'] = 'The price must be more than 0!';
-            }
-        }
-    } else {
-        $error['price_error'] = 'The price can’t be empty!';
-    }
     
-    if (!empty($quantity)) {
-        if (!is_numeric($quantity)) {
-            $error['quantity_error'] = 'The quantity must be a number!';
-        } else {
-            if ($price < 0) {
-                $error['quantity_error'] = 'The quantity must be more than 0!';
-            }
+    $MatKhau = $_POST['MatKhau'];
+
+
+    //---------------Check TenNguoiDung---------------
+    if (!empty($TenNguoiDung)) {
+        if (!check_tennguoidung($TenNguoiDung)) {
+            $error['error_tennguoidung'] = 'The tennguoidung has an incorect format!';
         }
     } else {
-        $error['quantity_error'] = 'The quatity can’t be empty!';
+        $error['error_tennguoidung'] = 'The tennguoidung can’t be empty!';
     }
 
-    //Check giam gia
-    if (!empty($discount)) {
-        if (!is_numeric($discount)) {
-            $error['discount_error'] = 'The discount must be a number!';
-        } else {
-            if ($discount < 0 || $discount > 100) {
-                $error['discount_error'] = 'The discount must be between 0% and 100%!';
-            }
-        }
-    } else {
-        $error['discount_error'] = 'The discount can’t be empty!';
-    }
 
-    if (!empty($error)) {
-        $value = [
-            'error' => $error
-        ];
-        return $value;
-
-    } else {
-        $value = [
-            'cate_id' => $cate_id,
-            'product_name' => $product_name,
-            'price' => $price,
-            'quantity' => $quantity,
-            'description' => $description,
-            // 'images' => $images,
-            'discount' => $discount
-        ];
-        return $value;
-    }
-
+if (empty($QuyenTruyCap)) {
+    $error['error_QuyenTruyCap'] = 'The QuyenTruyCap can’t be empty!';
 }
-
-function check_form_update_product()
-{
-    global $IMAGE_DIR;
-    $error = [];
-
-    $cate_id = $_POST['cate_id'];
-    $product_id = $_POST['product_id'];
-    $product_name = $_POST['product_name'];
-    $price = $_POST['price'];
-    $discount = $_POST['discount'];
-    $quantity = $_POST['quantity'];
-    $description = $_POST['description'];
-    // $up_hinh = save_file("images", $IMAGE_DIR);
-    // $images = strlen($up_hinh) > 0 ? $up_hinh : 'product_default.png';
-
-    //Check name of product
-    if (!empty($product_name)) {
-        if (is_numeric($product_name)) {
-            $error['name_error'] = 'The product name must be letters!';
+ //---------------Check password---------------
+    if (!empty($MatKhau)) {
+        if (!check_matkhau($MatKhau)) {
+            $error['error_matkhau'] = 'The matkhau has an incorect format!';
         }
     } else {
-        $error['name_error'] = 'The product name can’t be empty!';
+        $error['error_matkhau'] = 'The matkhau can’t be empty!';
     }
 
-    //Check price of product
-    if (!empty($price)) {
-        if (!is_numeric($price)) {
-            $error['price_error'] = 'The price must be a number!';
-        } else {
-            if ($price < 0) {
-                $error['price_error'] = 'The price must be more than 0!';
-            }
-        }
-    } else {
-        $error['price_error'] = 'The price can’t be empty!';
-    }
-
-    if (!empty($quantity)) {
-        if (!is_numeric($quantity)) {
-            $error['quantity_error'] = 'The quantity must be a number!';
-        } else {
-            if ($price < 0) {
-                $error['quantity_error'] = 'The quantity must be more than 0!';
-            }
-        }
-    } else {
-        $error['quantity_error'] = 'The quatity can’t be empty!';
-    }
-
-    //Check giam gia
-    if (!empty($discount)) {
-        if (!is_numeric($discount)) {
-            $error['discount_error'] = 'The discount must be a number!';
-        } else {
-            if ($discount < 0 || $discount > 100) {
-                $error['discount_error'] = 'The discount must be between 0% and 100%!';
-            }
-        }
-    } else {
-        $error['discount_error'] = 'The discount can’t be empty!';
-    }
-
-    if (!empty($error)) {
-        $value = [
-            'error' => $error
-        ];
-        return $value;
-
-    } else {
-        $value = [
-            'cate_id' => $cate_id,
-            'product_id' => $product_id,
-            'product_name' => $product_name,
-            'price' => $price,
-            'quantity' => $quantity,
-            'description' => $description,
-            // 'images' => $images,
-            'discount' => $discount
-        ];
-        return $value;
-    }
-
-}
-// Function check form add role
-function check_form_add_role()
-{
-    $error = [];
-    $role_name = $_POST['role_name'];
-
-    if (!empty($role_name)) {
-        if (is_numeric($role_name)) {
-            $error['error_role'] = 'The role name must be letters!';
-        }
-    } else {
-        $error['error_role'] = 'The role name can’t be empty!';
-    }
 
     if (!empty($error)) {
         $value = [
@@ -528,41 +523,14 @@ function check_form_add_role()
         return $value;
     } else {
         $value = [
-            'role_name' => $role_name,
+            'MaNguoiDung' => $MaNguoiDung,
+            'TenNguoiDung' => $TenNguoiDung,
+            'QuyenTruyCap' => $QuyenTruyCap,
+            'MatKhau' => $MatKhau
         ];
         return $value;
     }
 }
 
-//Check name of product
-function check_form_update_role()
-{
-    $error = [];
-    // Kiểm tra xem 'role_id' có tồn tại trong $_POST không
-    $role_id = $_POST['role_id'];
-    $role_name = $_POST['role_name'];
-
-    // Check name of role
-    if (!empty($role_name)) {
-        if (is_numeric($role_name)) {
-            $error['error_role'] = 'The role name must be letters!';
-        }
-    } else {
-        $error['error_role'] = 'The role name can’t be empty!';
-    }
-
-    if (!empty($error)) {
-        $value = [
-            'error' => $error
-        ];
-        return $value;
-    } else {
-        $value = [
-            'role_id' => $role_id,
-            'role_name' => $role_name,
-        ];
-        return $value;
-    }
-}
 
 ?>

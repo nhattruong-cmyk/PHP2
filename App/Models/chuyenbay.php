@@ -3,17 +3,17 @@
 class ChuyenBay extends Connect{
 
         //Insert ChuyenBay
-        function chuyenbay_insert($MaChuyenBay,$TenChuyenBay,$DiaChi,$ThongTinLienHe)
+        function chuyenbay_insert($MaSanBayXuatPhat,$MaSanBayDen,$NgayGioXuatPhat,$NgayGioDen)
         {
-            $sql = "INSERT INTO ChuyenBay(`MaChuyenBay`,`TenChuyenBay`,`DiaChi`,`ThongTinLienHe`) VALUES(?,?,?,?)";
-            $this->pdo_execute($sql,$MaChuyenBay,$TenChuyenBay,$DiaChi,$ThongTinLienHe);
+            $sql = "INSERT INTO chuyenbay(`MaSanBayXuatPhat`,`MaSanBayDen`,`NgayGioXuatPhat`,`NgayGioDen`) VALUES(?,?,?,?)";
+            $this->pdo_execute($sql,$MaSanBayXuatPhat,$MaSanBayDen,$NgayGioXuatPhat,$NgayGioDen);
         }
 
         //Update
-        function chuyenbay_update($MaChuyenBay, $TenChuyenBay,$DiaChi,$ThongTinLienHe)
+        function chuyenbay_update($MaChuyenBay, $MaSanBayXuatPhat,$MaSanBayDen,$NgayGioXuatPhat,$NgayGioDen)
         {
-            $sql = "UPDATE `ChuyenBay` SET `TenChuyenBay`=?,`DiaChi`=?,`ThongTinLienHe` WHERE `MaChuyenBay`=?";
-            $this->pdo_execute($sql,$TenChuyenBay,$DiaChi,$ThongTinLienHe,$MaChuyenBay);
+            $sql = "UPDATE `chuyenbay` SET `MaSanBayXuatPhat`=?,`MaSanBayDen`=?,`NgayGioXuatPhat`=?, `NgayGioDen`=? WHERE `MaChuyenBay`=?";
+            $this->pdo_execute($sql,$MaSanBayXuatPhat,$MaSanBayDen,$NgayGioXuatPhat,$NgayGioDen,$MaChuyenBay);
         }
 
         //Delete

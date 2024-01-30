@@ -3,21 +3,23 @@
 class Ve extends Connect{
 
         //Insert Ve
-        function ve_insert($MaVe,$MaChuyenBay,$MaHanhKhach,$NgayDacVe,$TrangThaiThanhToan,$GiaVe)
+        function ve_insert($MaChuyenBay,$LoaiVe,$GiaVe)
         {
-            $sql = "INSERT INTO Ve(`MaVe`,`MaChuyenBay`,`MaHanhKhach`,`NgayDatVe`,`TrangThaiThanhToan`,`GiaVe`) VALUES(?,?,?,?,?,?)";
-            $this->pdo_execute($sql,$MaVe,$MaChuyenBay,$MaHanhKhach,$NgayDacVe,$TrangThaiThanhToan,$GiaVe);
+            $sql = "INSERT INTO ve(`MaChuyenBay`, `LoaiVe`, `GiaVe`) VALUES (?, ?, ?)";
+            $this->pdo_execute($sql, $MaChuyenBay,$LoaiVe,$GiaVe);
+            
         }
+        
 
         //Update
-        function Ve_update($MaVe, $TenVe,$DiaChi,$ThongTinLienHe)
+        function ve_update($MaVe, $MaChuyenBay,$LoaiVe,$GiaVe)
         {
-            $sql = "UPDATE `Ve` SET `TenVe`=?,`DiaChi`=?,`ThongTinLienHe` WHERE `MaVe`=?";
-            $this->pdo_execute($sql,$TenVe,$DiaChi,$ThongTinLienHe,$MaVe);
+            $sql = "UPDATE `ve` SET `MaChuyenBay`=?,`LoaiVe`=?,`GiaVe`=? WHERE `MaVe`=?";
+            $this->pdo_execute($sql,$MaChuyenBay,$LoaiVe,$GiaVe,$MaVe);
         }
 
         //Delete
-        function Ve_delete($MaVe)
+        function ve_delete($MaVe)
         {
             $sql = "DELETE FROM `Ve` WHERE `$MaVe`=?";
             if (is_array($MaVe)) {
@@ -48,9 +50,9 @@ class Ve extends Connect{
             return $this->pdo_query($sql);
         }
 
-        function Ve_select_by_id($MaVe)
+        function ve_select_by_id($MaVe)
         {
-            $sql = "SELECT * FROM Ve WHERE MaVe=?";
+            $sql = "SELECT * FROM ve WHERE MaVe=?";
             return $this->pdo_query_one($sql, $MaVe);
         }
         

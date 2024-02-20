@@ -1,6 +1,6 @@
 <?php
-$sanbay = new SanBay();
-$ve = new Ve();
+$sanbay = new App\Models\SanBay();
+$ve = new App\Models\Ve();
 $list_ve = $ve->ve_select_all();
 $list_sanbay = $sanbay->sanbay_select_all();
 ?>

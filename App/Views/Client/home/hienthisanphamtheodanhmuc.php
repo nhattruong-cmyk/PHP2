@@ -1,3 +1,20 @@
+
+<?php
+$sanbay = new App\Models\SanBay();
+$chuyenbay = new App\Models\ChuyenBay();
+$ve = new App\Models\Ve();
+$cate = new App\Models\Category();
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$list_chuyenbay = $chuyenbay->chuyenbay_select_all();
+$list_sanbay = $sanbay->sanbay_select_all();
+$list_cate = $cate->category_select_all();
+$list_ve = $ve->ve_select_all($MaLoai);
+
+?>
 <html>
 <link rel="stylesheet" href="public/assets/css/css_ve.css">
 </html>
@@ -36,76 +53,40 @@
         <div class="col-lg-3">
             <div class="shop__sidebar">
                 <div class="shop__sidebar__search">
-                    <form action="#">
-                        <input type="text" placeholder="Search...">
-                        <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    <form action="?pages=search_ve" method="post">
+                        <input type="text" placeholder="Search..." name="kyw">
+                        <input type="submit" name="timkiem"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path
                                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                            </svg></button>
+                            </svg></input>
                     </form>
                 </div>
                 <div class="shop__sidebar__accordion">
                     <div class="accordion" id="accordionExample">
-                        <div class="card">
-                            <div class="card-heading">
-                                <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
-                            </div>
-                            <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <div class="shop__sidebar__categories">
-                                        <ul class="nice-scroll">
-                                            <li><a href="#">Men (20)</a></li>
-                                            <li><a href="#">Women (20)</a></li>
-                                            <li><a href="#">Bags (20)</a></li>
-                                            <li><a href="#">Clothing (20)</a></li>
-                                            <li><a href="#">Shoes (20)</a></li>
-                                            <li><a href="#">Accessories (20)</a></li>
-                                            <li><a href="#">Kids (20)</a></li>
-                                            <li><a href="#">Kids (20)</a></li>
-                                            <li><a href="#">Kids (20)</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-heading">
-                                <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
-                            </div>
-                            <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <div class="shop__sidebar__brand">
-                                        <ul>
-                                            <li><a href="#">Louis Vuitton</a></li>
-                                            <li><a href="#">Chanel</a></li>
-                                            <li><a href="#">Hermes</a></li>
-                                            <li><a href="#">Gucci</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-heading">
-                                <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
-                            </div>
-                            <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <div class="shop__sidebar__price">
-                                        <ul>
-                                            <li><a href="#">$0.00 - $50.00</a></li>
-                                            <li><a href="#">$50.00 - $100.00</a></li>
-                                            <li><a href="#">$100.00 - $150.00</a></li>
-                                            <li><a href="#">$150.00 - $200.00</a></li>
-                                            <li><a href="#">$200.00 - $250.00</a></li>
-                                            <li><a href="#">250.00+</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
+                    <div class="card">
+                    <div class="card-heading">
+                        <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                    </div>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="shop__sidebar__categories">
+                                <ul class="nice-scroll">
+                                    <?php
+                                    // $cate  = new Category();
+                                    foreach ($cate->category_select_all() as $item) {
+                                        extract($item) ?>
+                                        <li><a href="?pages=sanpham&MaLoai=<?= $MaLoai ?>"><?= $TenLoai ?></a></li>
+                                    <?php
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                       
                     </div>
                 </div>
             </div>
@@ -172,44 +153,97 @@
                 }
             </style>
 
-
             <div class="row">
-                <div class="col-lg-12 col-md-6 col-sm-6">
+            <?php
+                            function pdo_get_connection()
+                            {
+                                $servername = 'localhost';
+                                $dbname = 'php2';
+                                $username = 'root';
+                                $password = 'mysql';
+
+                                try {
+                                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                    return $conn;
+                                } catch (PDOException $e) {
+                                    die("Kết nối thất bại: " . $e->getMessage());
+                                }
+                            }
+                            
+
+                            // Hàm để lấy danh sách vé
+                            function getListVe()
+                            {
+                                try {
+                                    $conn = pdo_get_connection();
+
+                                    $sql = "SELECT ve.*, chuyenbay.*
+                                    FROM ve
+                                    INNER JOIN chuyenbay ON ve.MaChuyenBay = chuyenbay.MaChuyenBay
+                                    ORDER BY ve.MaVe ASC";
+                            
+                                    $stmt = $conn->query($sql);
+                                    $list_ve = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                    $conn = null;
+                                    return $list_ve;
+                                } catch (PDOException $e) {
+                                    die("Lỗi truy vấn: " . $e->getMessage());
+                                }
+                            }
+                            // Lấy danh sách vé
+                            $list_ve = getListVe();
+                            // Hiển thị dữ liệu trong bảng
+                            $stt = 0;
+                            foreach ($list_ve as $item) {
+                                extract($item);
+                                $stt++;
+                                ?>
+                                    <div class="col-lg-12 col-md-6 col-sm-6">
                     <div class="product__item">
                         <div class="mave">
                             <label for="">Mã Vé</label>
-                            <h3>001</h3>
+                            <h3><?= $MaVe ?></h3>
                         </div>
                         <div class="xuatphat">
-                        <label for="">Điểm ĐI</label>
-                            <h4>Vũng Tàu</h4>
+                        <label for="">Điểm Đi</label>
+                            <h4><?= $MaSanBayXuatPhat ?></h4>
                         </div>
-                        <div class="timedi">
+                        <!-- <div class="timedi">
                         <label for="">Thời Gian Bay</label>
-                            2020-01-01
+                        <?=$NgayGioXuatPhat?>
+                        </div> -->
+                        <div class="MaLoai">
+                            <label for="">Loại Vé</label>
+                            <h4> <?= ($MaLoai == 1) ? 'Một Chiều' : (($MaLoai == 2) ? 'Khứ Hồi' : '') ?></h4>
                         </div>
-                        <div class="timeve">
-                            <label for="">Thời Gian Về</label>
-                            20:00:00
-                        </div>
-                        <div class="thoigianbay">
+                        <!-- <div class="thoigianbay">
                         <label for="">Thời Gian Bay</label>
                             20:00:00
-                        </div>
+                        </div> -->
                         <div class="dichden">
                         <label for="">Điểm Đến</label>
-                            <h4>Sài Gòn</h4>
+                            <h4><?= $MaSanBayDen?></h4>
                         </div>
-                        <a href="">Xem chi tiết</a>
                     </div>
                 </div>
+                                     
+                                        <!-- <?= $MaChuyenBay ?> -->
+
+                                        <!-- <?= ($MaLoai == 1) ? 'Một Chiều' : (($MaLoai == 2) ? 'Khứ Hồi' : '') ?> -->
+                                                                      
+                                        <!-- <?= $GiaVe ?> -->
+
+                                <?php
+                            }
+                            ?>
 
 
 
                 <!-- một vé ---------------------------------------------------------------------------------------------------------------------------------------->
 
 
-                <div class="col-lg-12 col-md-6 col-sm-6">
+                <!-- <div class="col-lg-12 col-md-6 col-sm-6">
                     <div class="product__item">
                         <div class="mave">
                             <label for="">Mã Vé</label>
@@ -236,67 +270,10 @@
                             <h4>Sài Gòn</h4>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
-                <div class="col-lg-12 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="mave">
-                            <label for="">Mã Vé</label>
-                            <h3>001</h3>
-                        </div>
-                        <div class="xuatphat">
-                        <label for="">Điểm ĐI</label>
-                            <h4>Vũng Tàu</h4>
-                        </div>
-                        <div class="timedi">
-                        <label for="">Thời Gian Bay</label>
-                            2020-01-01
-                        </div>
-                        <div class="timeve">
-                            <label for="">Thời Gian Về</label>
-                            20:00:00
-                        </div>
-                        <div class="thoigianbay">
-                        <label for="">Thời Gian Bay</label>
-                            20:00:00
-                        </div>
-                        <div class="dichden">
-                        <label for="">Điểm Đến</label>
-                            <h4>Sài Gòn</h4>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-12 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="mave">
-                            <label for="">Mã Vé</label>
-                            <h3>001</h3>
-                        </div>
-                        <div class="xuatphat">
-                        <label for="">Điểm ĐI</label>
-                            <h4>Vũng Tàu</h4>
-                        </div>
-                        <div class="timedi">
-                        <label for="">Thời Gian Bay</label>
-                            2020-01-01
-                        </div>
-                        <div class="timeve">
-                            <label for="">Thời Gian Về</label>
-                            20:00:00
-                        </div>
-                        <div class="thoigianbay">
-                        <label for="">Thời Gian Bay</label>
-                            20:00:00
-                        </div>
-                        <div class="dichden">
-                        <label for="">Điểm Đến</label>
-                            <h4>Sài Gòn</h4>
-                        </div>
-                    </div>
-                </div>
+                
                 <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item sale">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">

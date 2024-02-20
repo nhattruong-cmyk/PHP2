@@ -1,0 +1,16 @@
+{
+    "name": "truong/assignment",
+    "autoload": {
+        "psr-4": {
+            "App\\": "./App/"
+
+        }
+    },
+    "authors": [ 
+        {
+            "name": "nhattruong-cmyk",
+            "email": "truongnnpc05926@fpt.edu.vn"
+        }
+    ],
+    "require": {}
+}

@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Models;
 class SanBay extends Connect
 {
 
@@ -64,6 +65,11 @@ class SanBay extends Connect
         $sql = "SELECT * FROM sanbay WHERE parent_id=?";
         return $this->pdo_query($sql, $parent_id);
     }
+    function loc_sanbay($MaSanBay)
+        {
+            $sql = "SELECT count(*) FROM sanbay WHERE MaSanBay=?";
+            return $this->pdo_query_value($sql, $MaSanBay) > 0;
+        }
 
 }
 

@@ -1,5 +1,6 @@
 <?php 
 
+namespace App\Models;
 class TaiKhoan extends Connect{
 
         //Insert TaiKhoan
@@ -62,6 +63,11 @@ class TaiKhoan extends Connect{
         function user_select_by_username($TenNguoiDung)
         {
             $sql = "SELECT * FROM `nguoidung` WHERE TenNguoiDung = '$TenNguoiDung';";
+            return  $this->pdo_query_one($sql);
+        }
+        function checkuser($TenNguoiDung, $MatKhau)
+        {
+            $sql = "SELECT * FROM `nguoidung` WHERE TenNguoiDung = '$TenNguoiDung' AND MatKhau = '$MatKhau';";
             return  $this->pdo_query_one($sql);
         }
     }

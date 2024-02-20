@@ -1,7 +1,7 @@
 <?php
 $errol = "";
 if (isset($_POST["login"])) {
-    $user = new TaiKhoan();
+    $user = new App\Models\TaiKhoan();
     $data = $user->user_select_by_username($_POST["TenNguoiDung"]);
     if(!empty($data)){
         if($data['TenNguoiDung'] == $_POST["TenNguoiDung"] && $data['MatKhau'] == $_POST["MatKhau"]){

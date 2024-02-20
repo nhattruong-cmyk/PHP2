@@ -1,5 +1,6 @@
 <?php 
 
+namespace App\Models;
 class Ve extends Connect{
 
         //Insert Ve
@@ -21,7 +22,7 @@ class Ve extends Connect{
         //Delete
         function ve_delete($MaVe)
         {
-            $sql = "DELETE FROM `Ve` WHERE `$MaVe`=?";
+            $sql = "DELETE FROM `ve` WHERE `$MaVe`=?";
             if (is_array($MaVe)) {
                 foreach ($MaVe as $id) {
                     $this->pdo_execute($sql, $id);
@@ -32,16 +33,21 @@ class Ve extends Connect{
         }
 
         //Get all
-        function ve_select_all()
-        {
-            $sql = "SELECT * FROM ve";
-            return $this->pdo_query($sql);
+        // function ve_select_all()
+        // {
+        //     $sql = "SELECT * FROM ve";
+        //     return $this->pdo_query($sql);
+        // }
+
+        function ve_select_by_loai($MaLoai){
+            $sql = "SELECT * FROM ve WHERE MaLoai = ?  LIMIT 0,4";
+            return $this->pdo_query($sql, $MaLoai);
         }
 
 
 
         function num_row_Ve(){
-            $sql = "SELECT count(*) as num_row FROM Ve";
+            $sql = "SELECT count(*) as num_row FROM ve";
             return $this->pdo_query($sql);
         }
 
@@ -61,7 +67,23 @@ class Ve extends Connect{
             $sql = "SELECT * FROM Ve WHERE parent_id=?";
             return $this->pdo_query($sql, $parent_id);
         }
+        function ve_select_keyword($keyword){
+            $sql = "SELECT * FROM ve v JOIN chuyenbay cb ON cb.machuyenbay = v.machuyenbay WHERE MaVe LIKE ? OR MaSanBayXuatPhat LIKE ? OR MaSanBayDen LIKE?";
+            return $this->pdo_query($sql,'%'. $keyword. '%','%'. $keyword. '%');
+        }
+        
+        function ve_select_all($MaLoai = 0)
+{
+    $sql = "SELECT * FROM ve WHERE 1 ";
+    if ($MaLoai > 0) {
+        $sql .= " AND MaLoai = " . $MaLoai;
+    }
+    $sql .= " ORDER BY MaVe ASC";
+    return $this->pdo_query($sql);
+}
 
+
+        
     }
     
 ?>

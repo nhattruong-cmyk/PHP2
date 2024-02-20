@@ -81,41 +81,46 @@ https://templatemo.com/tm-591-villa-agency
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="?pages=home" class="logo">
-              
+
               <img src="./public/images/logo.png" style="padding:15px 0;" alt="">
-              
+
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li><a href="?pages=home" class="active">Trang Chủ</a></li>
-              <li><a href="?pages=timkiemve">Vé</a></li>
+              <li><a href="?pages=sanpham">Vé</a></li>
               <li><a href="?pages=blog">Bài Viết</a></li>
               <li><a href="?pages=contact">Liên Hệ</a></li>
 
               <?php
-              if (!empty($_SESSION['user'])) {
-                $retrieved_data = unserialize($_SESSION['user']);
+if (isset($_SESSION['user'])) {
+    $retrieved_data = unserialize($_SESSION['user']);
 
-                if ($retrieved_data['QuyenTruyCap'] == 1) {
-                  // If the user is an administrator, redirect to the admin page
-                  echo '<div class="xinchao">Xin chào ' . $retrieved_data['TenNguoiDung'] . '-> <a href="App/Controllers/Admin/index.php">Admin</a></div>
-                 
-                  <form class=logout method="post" action=""><input type="submit" name="logout" value="Đăng Xuất"></form>';
+    // Kiểm tra xem $retrieved_data có phải là mảng không
+    if (is_array($retrieved_data)) {
+        if ($retrieved_data['QuyenTruyCap'] == 1) {
+            // Nếu người dùng là quản trị viên, chuyển hướng đến trang quản trị
+            echo '<div class="xinchao">Xin chào ' . $retrieved_data['TenNguoiDung'] . '-> <a href="App/Controllers/Admin/index.php">Admin</a></div>
+                  <form class="logout" method="post" action=""><input type="submit" name="logout" value="Rời"></form>';
+        } else {
+            // Nếu người dùng không phải là quản trị viên, hiển thị thông tin người dùng
+            echo '<div class="xinchao">Xin chào ' . $retrieved_data['TenNguoiDung'] . '</div></li><form class="logout" method="post" action="">
+                  <input type="submit" name="logout" value="Rời"></form>';
+        }
+    } else {
+        // Nếu $retrieved_data không phải là mảng, hiển thị nút Đăng Nhập và Đăng Ký
+        echo '<li class="login-li"><a href="?pages=login">Đăng Nhập</a></li>
+              <li class="register-li"><a href="?pages=register">Đăng Ký</a></li>';
+    }
+} else {
+    // Nếu người dùng không đăng nhập, hiển thị nút Đăng Nhập và Đăng Ký
+    echo '<li class="login-li"><a href="?pages=login">Đăng Nhập</a></li>
+          <li class="register-li"><a href="?pages=register">Đăng Ký</a></li>';
+}
+?>
 
-                } else {
-                  // If the user is not an administrator, display user information
-                  echo '<div class="xinchao">Xin chào ' . $retrieved_data['TenNguoiDung'] . '</div></li><form class=logout method="post" action="">
-                  <input type="submit" name="logout" value="Đăng Xuất">
-                </form>
-                ';
-                }
-              } else {
-                // If the user is not logged in, display login and register links
-                echo '<li class="login-li"><a href="?pages=login">Đăng Nhập</a></li>
-                      <li class="register-li"><a href="?pages=register">Đăng Ký</a></li>';
-              }
-              ?>
+
 
               <li><a href="?pages=cart"><i class="fa fa-calendar"></i>Giỏ Hàng</a></li>
             </ul>
